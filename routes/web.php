@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.view'
 
 
 ## Admin
-Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'verified']);
+
+
+## Category
+Route::resource('categories', CategoryController::class);
+Route::post('/categories/status/{id}', [CategoryController::class, 'changeStatus'])->name('categories.status');

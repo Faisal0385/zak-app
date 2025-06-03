@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="{{ asset('admin/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">Admin</h4>
@@ -26,7 +26,7 @@
             </a>
         </li>
         <li>
-            <a href="./category.html">
+            <a href="{{ route('categories.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Manage Category</div>
             </a>

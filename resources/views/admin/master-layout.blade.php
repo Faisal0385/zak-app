@@ -24,6 +24,14 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/') }}css/semi-dark.css" />
     <link rel="stylesheet" href="{{ asset('admin/assets/') }}css/header-colors.css" />
     <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
 </head>
 
 <body>
@@ -56,6 +64,7 @@
     <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
     <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
+
     <script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
@@ -74,6 +83,13 @@
     <script src="{{ asset('admin/assets/js/index.j') }}s"></script>
     <!--app JS-->
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#datatable").DataTable();
+        });
+    </script>
 </body>
 
 </html>
