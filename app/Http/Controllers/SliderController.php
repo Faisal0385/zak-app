@@ -47,13 +47,6 @@ class SliderController extends Controller
         $slider->title = $request->title;
         $slider->sub_title = $request->subtitle;
 
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-        //     $image->move(public_path('uploads/sliders'), $imageName);
-        //     $slider->image = 'uploads/sliders/' . $imageName;
-        // }
-
         if ($request->hasFile('image')) {
             $slider->image = $this->uploadImage($request->file('image'));
         }

@@ -14,7 +14,7 @@
                     <a class="nav-link text-white active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('about.view') }}">About Us</a>
+                    <a class="nav-link text-white" href="{{ route('about.index') }}">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">Our Properties</a>

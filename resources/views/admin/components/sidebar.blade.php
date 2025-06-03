@@ -32,7 +32,7 @@
             </a>
         </li>
         <li>
-            <a href="./about.html">
+            <a href="{{ route('about.create') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Manage About</div>
             </a>

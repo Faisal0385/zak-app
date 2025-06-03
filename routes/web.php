@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
@@ -32,7 +33,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/about', [AboutController::class, 'index'])->name('about.view');
+// Route::get('/about', [AboutController::class, 'index'])->name('about.view');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.view');
 
 
@@ -47,3 +48,7 @@ Route::post('/categories/status/{id}', [CategoryController::class, 'changeStatus
 ## Slider
 Route::resource('slider', SliderController::class);
 Route::post('/slider/status/{id}', [SliderController::class, 'changeStatus'])->name('slider.status');
+
+## About
+Route::resource('about', AboutPageController::class);
+Route::post('/admin/about/update/{id}', [AboutPageController::class, 'update'])->name('about.update');
