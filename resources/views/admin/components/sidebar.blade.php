@@ -20,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="./category.html">
+            <a href="{{ route('slider.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Manage Slider</div>
             </a>
