@@ -21,7 +21,7 @@ class AboutPageController extends Controller
     public function create()
     {
         $aboutpage = AboutPage::latest()->first();
-        return view('admin.about.create', compact('aboutpage'));
+        return view('admin.about.edit', compact('aboutpage'));
     }
 
 

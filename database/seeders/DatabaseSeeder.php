@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         // $this->call([
         //     // CategorySeeder::class,
         // ]);
-        $this->call(AboutPageSeeder::class);
+        // $this->call(AboutPageSeeder::class);
+        $this->call(SocialMediaLinkSeeder::class);
     }
 }
