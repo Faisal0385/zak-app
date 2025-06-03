@@ -1,0 +1,17 @@
+.custom-secondary-btn {
+    width: 100%;
+    border: 2px solid #2e7d7d;
+    color: #2e7d7d;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.custom-secondary-btn:hover {
+    background-color: #2e7d7d;
+    color: white;
+    text-decoration: none;
+}
