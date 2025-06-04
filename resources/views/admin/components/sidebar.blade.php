@@ -46,9 +46,9 @@
             </a>
         </li>
         <li>
-            <a href="./category.html">
+            <a href="{{ route('social.link.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Cities</div>
+                <div class="menu-title">Manage Social Link</div>
             </a>
         </li>
 

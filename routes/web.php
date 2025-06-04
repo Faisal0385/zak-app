@@ -8,6 +8,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\SocialMediaLinkController;
+use App\Models\SocialMediaLink;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +43,6 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.view'
 ## Admin
 Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'verified']);
 
-
 ## Category
 Route::resource('categories', CategoryController::class);
 Route::post('/categories/status/{id}', [CategoryController::class, 'changeStatus'])->name('categories.status');
@@ -57,3 +58,12 @@ Route::post('/admin/about/update/{id}', [AboutPageController::class, 'update'])-
 ## SiteSetting
 Route::get('/settings/create', [SiteSettingController::class, 'create'])->name('settings.create');
 Route::post('/settings/update', [SiteSettingController::class, 'update'])->name('settings.update');
+
+## Social Media Link
+Route::get('/social/link/index', [SocialMediaLinkController::class, 'index'])->name('social.link.index');
+Route::get('/social/link/create', [SocialMediaLinkController::class, 'create'])->name('social.link.create');
+Route::get('/social/link/{id}/edit', [SocialMediaLinkController::class, 'edit'])->name('social.link.edit');
+
+Route::post('/social/link/store', [SocialMediaLinkController::class, 'store'])->name('social.link.store');
+Route::post('/social/link/{id}/update', [SocialMediaLinkController::class, 'update'])->name('social.link.update');
+Route::post('/social/link/{id}/destroy', [SocialMediaLinkController::class, 'destroy'])->name('social.link.destroy');
