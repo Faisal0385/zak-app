@@ -7,6 +7,7 @@ use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyStatusController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialMediaLinkController;
@@ -69,7 +70,7 @@ Route::post('/social/link/store', [SocialMediaLinkController::class, 'store'])->
 Route::post('/social/link/{id}/update', [SocialMediaLinkController::class, 'update'])->name('social.link.update');
 Route::post('/social/link/{id}/destroy', [SocialMediaLinkController::class, 'destroy'])->name('social.link.destroy');
 
-## Social Media Link
+## Amenities Link
 Route::get('/amenities/index', [AmenitiesController::class, 'index'])->name('amenities.index');
 Route::get('/amenities/create', [AmenitiesController::class, 'create'])->name('amenities.create');
 Route::get('/amenities/{id}/edit', [AmenitiesController::class, 'edit'])->name('amenities.edit');
@@ -77,3 +78,14 @@ Route::get('/amenities/{id}/edit', [AmenitiesController::class, 'edit'])->name('
 Route::post('/amenities/store', [AmenitiesController::class, 'store'])->name('amenities.store');
 Route::post('/amenities/{id}/update', [AmenitiesController::class, 'update'])->name('amenities.update');
 Route::post('/amenities/{id}/destroy', [AmenitiesController::class, 'destroy'])->name('amenities.destroy');
+
+
+## Property Status
+Route::get('/property/status/index', [PropertyStatusController::class, 'index'])->name('property.status.index');
+Route::get('/property/status/create', [PropertyStatusController::class, 'create'])->name('property.status.create');
+Route::get('/property/status/{id}/edit', [PropertyStatusController::class, 'edit'])->name('property.status.edit');
+
+Route::post('/property/status/store', [PropertyStatusController::class, 'store'])->name('property.status.store');
+Route::post('/property/status/{id}/update', [PropertyStatusController::class, 'update'])->name('property.status.update');
+Route::post('/property/status/{id}/destroy', [PropertyStatusController::class, 'destroy'])->name('property.status.destroy');
+Route::post('/property/status/{id}', [PropertyStatusController::class, 'changeStatus'])->name('property.status');

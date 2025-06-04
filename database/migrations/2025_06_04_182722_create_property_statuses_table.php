@@ -10,15 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('amenities', function (Blueprint $table) {
+        Schema::create('property_statuses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('project_id');
-            $table->string('name')->nullable();
-            $table->string('icon_class')->nullable();
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
-
-            // Foreign key constraint
-            // $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('amenities');
+        Schema::dropIfExists('property_statuses');
     }
 };

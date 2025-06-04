@@ -1,17 +1,25 @@
 @extends('admin.master-layout')
 @section('content')
-    <!--start page wrapper -->
     <div class="container-fluid">
         <!-- start page title -->
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">Category Page</h4>
-                    <a href="{{ route('categories.create') }}" class="btn btn-dark btn-sm waves-effect waves-light"
+                    <h4 class="mb-0">Property Status Page</h4>
+                    <a href="{{ route('property.status.create') }}" class="btn btn-dark btn-sm waves-effect waves-light"
                         style="float: right">
-                        <i class="fas fa-plus-circle"></i> Add Category
+                        <i class="fas fa-plus-circle" style="font-size: 15px"></i> Add Property Status
                     </a>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @if (session('success'))
+                    <div class="alert alert-success mt-3">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
         </div>
         <!-- end page title -->
@@ -20,7 +28,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">All Category List</h4>
+                        <h4 class="card-title">All Property Status List</h4>
                         <br />
                         <table id="datatable" class="table table-bordered dt-responsive nowrap"
                             style="
@@ -31,52 +39,47 @@
                       ">
                             <thead>
                                 <tr class="text-white" style="background-color: teal">
-                                    <th width="5%">Sl</th>
-                                    <th width="10%">Image</th>
-                                    <th width="30%">Category Name</th>
-                                    <th width="5%" style="text-align: center">Action</th>
+                                    <th>Sl</th>
+                                    <th>Property Status</th>
+                                    <th>Slug</th>
+                                    <th style="text-align: center">Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($categories as $key => $category)
+                                @foreach ($properties as $key => $property)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>
-                                            <img class="img-thumbnail"
-                                                src="{{ $category->image ? asset($category->image) : asset('no_image.jpg') }}"
-                                                alt="image" width="60px" height="60px" />
+                                            {{ $property->name }}
                                         </td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $property->slug }}</td>
                                         <td class="text-center">
-                                            <a href="javascript:void(0)" id="status_btn_{{ $category->id }}"
-                                                class="btn btn-sm btn-{{ $category->status == 'inactive' ? 'danger' : 'success' }}"
-                                                onclick="StatusChange({{ $category->id }})">
+                                            <a href="javascript:void(0)" id="status_btn_{{ $property->id }}"
+                                                class="btn btn-sm btn-{{ $property->status == 'inactive' ? 'danger' : 'success' }}"
+                                                onclick="StatusChange({{ $property->id }})">
                                                 <i class="fa fa-check-circle m-0" style="font-size: 12px"></i>
                                             </a>
 
-
-                                            <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-info"
-                                                title="Edit Data">
+                                            <a href="{{ route('property.status.edit', $property) }}"
+                                                class="btn btn-sm btn-info" title="Edit Data">
                                                 <i class="fas fa-edit m-0" style="font-size: 12px"></i>
                                             </a>
 
-                                            <!-- Delete Button Trigger -->
                                             <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal"
-                                                onclick="setDeleteAction({{ $category->id }})">
+                                                data-bs-target="#exampleModal12">
                                                 <i class="fa fa-trash m-0" style="font-size: 12px"></i>
                                             </button>
 
-                                            <!-- Common Delete Modal -->
-                                            <div class="modal fade" id="deleteModal" tabindex="-1"
-                                                aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal12" tabindex="-1"
+                                                aria-labelledby="exampleModal12Label" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">
-                                                                <i class="fa-solid fa-circle-xmark text-danger"></i> Delete
-                                                                Item
+                                                            <h5 class="modal-title" id="exampleModal12Label">
+                                                                <i class="fa-solid fa-circle-xmark text-danger"></i>
+                                                                Delete Item
                                                             </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
@@ -85,34 +88,34 @@
                                                             <h5>Are You Sure You Want To Delete It?</h5>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <form action="{{ route('categories.destroy', $category->id) }}"
+                                                            <form
+                                                                action="{{ route('property.status.destroy', $property->id) }}"
                                                                 method="POST">
                                                                 @csrf
-                                                                @method('DELETE')
                                                                 <!-- This is required to spoof the DELETE method -->
                                                                 <button type="submit"
                                                                     class="btn btn-danger btn-sm">Yes</button>
                                                             </form>
                                                             <button type="button" class="btn btn-sm btn-info"
-                                                                data-bs-dismiss="modal">Close</button>
+                                                                data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </td>
                                     </tr>
                                 @endforeach
+
                             </tbody>
 
                             <tfooter>
                                 <tr class="text-white" style="background-color: teal">
-                                    <th width="5%">Sl</th>
-                                    <th width="10%">Image</th>
-                                    <th width="30%">Category Name</th>
-                                    <th width="5%" style="width: 10%; text-align: center">
-                                        Action
-                                    </th>
+                                    <th>Sl</th>
+                                    <th>Property Status</th>
+                                    <th>Slug</th>
+                                    <th style="text-align: center">Action</th>
                                 </tr>
                             </tfooter>
                         </table>
@@ -127,7 +130,7 @@
 
     <script>
         function StatusChange(id) {
-            fetch(`/categories/status/${id}`, {
+            fetch(`/property/status/${id}`, {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'

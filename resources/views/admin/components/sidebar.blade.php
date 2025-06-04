@@ -78,13 +78,13 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-grid-alt"></i>
                 </div>
-                <div class="menu-title">Manage Purchase</div>
+                <div class="menu-title">Manage Property</div>
             </a>
             <ul>
                 <li>
-                    <a href="table-basic-table.html">
+                    <a href="{{ route('property.status.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Add Purchase
+                        Add Property Status
                     </a>
                 </li>
                 <li>
