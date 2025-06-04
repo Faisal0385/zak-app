@@ -40,9 +40,9 @@
 
         <li class="menu-label">SETUP</li>
         <li>
-            <a href="./category.html">
+            <a href="{{ route('settings.create') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Country</div>
+                <div class="menu-title">Manage Site Setting</div>
             </a>
         </li>
         <li>

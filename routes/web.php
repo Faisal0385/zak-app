@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +39,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.view'
 
 
 ## Admin
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'verified']);
+Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'verified']);
 
 
 ## Category
@@ -52,3 +53,7 @@ Route::post('/slider/status/{id}', [SliderController::class, 'changeStatus'])->n
 ## About
 Route::resource('about', AboutPageController::class);
 Route::post('/admin/about/update/{id}', [AboutPageController::class, 'update'])->name('about.update');
+
+## SiteSetting
+Route::get('/settings/create', [SiteSettingController::class, 'create'])->name('settings.create');
+Route::post('/settings/update', [SiteSettingController::class, 'update'])->name('settings.update');
