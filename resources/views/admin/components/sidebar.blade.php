@@ -37,6 +37,12 @@
                 <div class="menu-title">Manage About</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('amenities.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Manage Amenities</div>
+            </a>
+        </li>
 
         <li class="menu-label">SETUP</li>
         <li>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -67,3 +68,12 @@ Route::get('/social/link/{id}/edit', [SocialMediaLinkController::class, 'edit'])
 Route::post('/social/link/store', [SocialMediaLinkController::class, 'store'])->name('social.link.store');
 Route::post('/social/link/{id}/update', [SocialMediaLinkController::class, 'update'])->name('social.link.update');
 Route::post('/social/link/{id}/destroy', [SocialMediaLinkController::class, 'destroy'])->name('social.link.destroy');
+
+## Social Media Link
+Route::get('/amenities/index', [AmenitiesController::class, 'index'])->name('amenities.index');
+Route::get('/amenities/create', [AmenitiesController::class, 'create'])->name('amenities.create');
+Route::get('/amenities/{id}/edit', [AmenitiesController::class, 'edit'])->name('amenities.edit');
+
+Route::post('/amenities/store', [AmenitiesController::class, 'store'])->name('amenities.store');
+Route::post('/amenities/{id}/update', [AmenitiesController::class, 'update'])->name('amenities.update');
+Route::post('/amenities/{id}/destroy', [AmenitiesController::class, 'destroy'])->name('amenities.destroy');
