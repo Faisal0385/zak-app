@@ -14,7 +14,7 @@
 
         <li class="menu-label">Dashboard</li>
         <li>
-            <a href="widgets.html">
+            <a href="{{ route('dashboard') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Dashboard</div>
             </a>
@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('property.status.index') }}">
+                    <a href="{{ route('properties.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
                         Add Properties
                     </a>

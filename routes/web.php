@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\PropertyAmenitiesController;
 use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
@@ -15,7 +14,6 @@ use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialMediaLinkController;
-use App\Models\SocialMediaLink;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,12 +40,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-// Route::get('/about', [AboutController::class, 'index'])->name('about.view');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.view');
 
 
 ## Admin
-Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'verified']);
+Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
 ## Category
 Route::resource('categories', CategoryController::class);
@@ -123,3 +120,13 @@ Route::post('/project/store', [ProjectController::class, 'store'])->name('projec
 Route::post('/project/{id}/update', [ProjectController::class, 'update'])->name('project.update');
 Route::post('/project/{id}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
 Route::post('/project/status/{id}', [ProjectController::class, 'changeStatus'])->name('project.status');
+
+
+## Add Properties
+Route::get('/properties/index', [PropertiesController::class, 'index'])->name('properties.index');
+Route::get('/properties/{id}/edit', [PropertiesController::class, 'edit'])->name('properties.edit');
+
+Route::get('/properties/{id}/add', [PropertiesController::class, 'add'])->name('properties.add');
+
+Route::post('/properties/create', [PropertiesController::class, 'create'])->name('properties.create');
+

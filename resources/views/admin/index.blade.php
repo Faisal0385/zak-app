@@ -6,7 +6,7 @@
             <div class="card radius-10 bg-gradient-deepblue">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0 text-white">9526</h5>
+                        <h5 class="mb-0 text-white">{{ $projects ?? 0 }}</h5>
                         <div class="ms-auto">
                             <i class='bx bx-cart fs-3 text-white'></i>
                         </div>
