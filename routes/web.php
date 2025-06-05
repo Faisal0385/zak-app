@@ -7,6 +7,7 @@ use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertyAmenitiesController;
 use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
@@ -112,3 +113,13 @@ Route::post('/property/amenities/store', [PropertyAmenitiesController::class, 's
 Route::post('/property/amenities/{id}/update', [PropertyAmenitiesController::class, 'update'])->name('property.amenities.update');
 Route::post('/property/amenities/{id}/destroy', [PropertyAmenitiesController::class, 'destroy'])->name('property.amenities.destroy');
 Route::post('/property/amenities/status/{id}', [PropertyAmenitiesController::class, 'changeStatus'])->name('property.amenities.status');
+
+## Add Project
+Route::get('/project/index', [ProjectController::class, 'index'])->name('project.index');
+Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
+Route::get('/project/{id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
+
+Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
+Route::post('/project/{id}/update', [ProjectController::class, 'update'])->name('project.update');
+Route::post('/project/{id}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
+Route::post('/project/status/{id}', [ProjectController::class, 'changeStatus'])->name('project.status');

@@ -60,6 +60,18 @@
             </a>
             <ul>
                 <li>
+                    <a href="{{ route('project.index') }}">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add Project
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('property.status.index') }}">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add Properties
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('property.status.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
                         Add Property Status
