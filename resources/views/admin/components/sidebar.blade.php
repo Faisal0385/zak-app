@@ -62,22 +62,6 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-grid-alt"></i>
                 </div>
-                <div class="menu-title">Manage Product</div>
-            </a>
-            <ul>
-                <li>
-                    <a href="table-basic-table.html">
-                        <i class="bx bx-right-arrow-alt"></i>
-                        Product List
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-grid-alt"></i>
-                </div>
                 <div class="menu-title">Manage Property</div>
             </a>
             <ul>
@@ -94,18 +78,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table-datatable.html">
+                    <a href="{{ route('property.label.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Return Purchase
+                        Add Property Label
                     </a>
                 </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="bx bx-grid-alt"></i>
+                </div>
+                <div class="menu-title">Manage Product</div>
+            </a>
+            <ul>
                 <li>
-                    <a href="table-datatable.html">
+                    <a href="table-basic-table.html">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Purchase Report
+                        Product List
                     </a>
                 </li>
-
             </ul>
         </li>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\SiteSettingController;
@@ -100,3 +101,13 @@ Route::post('/property/type/store', [PropertyTypeController::class, 'store'])->n
 Route::post('/property/type/{id}/update', [PropertyTypeController::class, 'update'])->name('property.type.update');
 Route::post('/property/type/{id}/destroy', [PropertyTypeController::class, 'destroy'])->name('property.type.destroy');
 Route::post('/property/type/{id}', [PropertyTypeController::class, 'changeStatus'])->name('property.type.status');
+
+## Property Label
+Route::get('/property/label/index', [PropertyLabelController::class, 'index'])->name('property.label.index');
+Route::get('/property/label/create', [PropertyLabelController::class, 'create'])->name('property.label.create');
+Route::get('/property/label/{id}/edit', [PropertyLabelController::class, 'edit'])->name('property.label.edit');
+
+Route::post('/property/label/store', [PropertyLabelController::class, 'store'])->name('property.label.store');
+Route::post('/property/label/{id}/update', [PropertyLabelController::class, 'update'])->name('property.label.update');
+Route::post('/property/label/{id}/destroy', [PropertyLabelController::class, 'destroy'])->name('property.label.destroy');
+Route::post('/property/label/{id}', [PropertyLabelController::class, 'changeStatus'])->name('property.label.status');

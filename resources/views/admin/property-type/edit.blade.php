@@ -8,7 +8,7 @@
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-8">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <strong>Validation Error:</strong>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-8">
                 @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
@@ -35,7 +35,7 @@
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title" style="color: black;"><b>Edit Property Status</b></h4>
+                        <h4 class="card-title" style="color: black;"><b>Edit Property Type</b></h4>
                         <hr class="m-1">
                         <form id="myForm" method="POST" action="{{ route('property.type.update', $property->id) }}">
                             @csrf
@@ -45,7 +45,7 @@
                                         Status</label>
                                     <div class="form-group">
                                         <input type="text" name="property_type" class="form-control form-control-sm"
-                                            placeholder="Property Status" value="{{ $property->name }}" />
+                                            placeholder="Property Type" value="{{ $property->name }}" />
                                     </div>
                                 </div>
                             </div>

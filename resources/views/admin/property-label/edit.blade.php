@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 mb-3">
-                <a class="btn btn-sm btn-primary" href="{{ route('property.status.index') }}">Back</a>
+                <a class="btn btn-sm btn-primary" href="{{ route('property.label.index') }}">Back</a>
             </div>
         </div>
 
@@ -35,17 +35,17 @@
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title" style="color: black;"><b>Edit Property Status</b></h4>
+                        <h4 class="card-title" style="color: black;"><b>Edit Property Label</b></h4>
                         <hr class="m-1">
-                        <form id="myForm" method="POST" action="{{ route('property.status.update', $property->id) }}">
+                        <form id="myForm" method="POST" action="{{ route('property.label.update', $property->id) }}">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label for="property_status" class="col-form-label">Property
-                                        Status</label>
+                                    <label for="property_label" class="col-form-label">Property
+                                        Label</label>
                                     <div class="form-group">
-                                        <input type="text" name="property_status" class="form-control form-control-sm"
-                                            placeholder="Property Status" value="{{ $property->name }}" />
+                                        <input type="text" name="property_label" class="form-control form-control-sm"
+                                            placeholder="Property Label" value="{{ $property->name }}" />
                                     </div>
                                 </div>
                             </div>
