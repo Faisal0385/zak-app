@@ -7,6 +7,7 @@ use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyAmenitiesController;
 use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
 use App\Http\Controllers\PropertyTypeController;
@@ -72,16 +73,6 @@ Route::post('/social/link/store', [SocialMediaLinkController::class, 'store'])->
 Route::post('/social/link/{id}/update', [SocialMediaLinkController::class, 'update'])->name('social.link.update');
 Route::post('/social/link/{id}/destroy', [SocialMediaLinkController::class, 'destroy'])->name('social.link.destroy');
 
-## Amenities Link
-Route::get('/amenities/index', [AmenitiesController::class, 'index'])->name('amenities.index');
-Route::get('/amenities/create', [AmenitiesController::class, 'create'])->name('amenities.create');
-Route::get('/amenities/{id}/edit', [AmenitiesController::class, 'edit'])->name('amenities.edit');
-
-Route::post('/amenities/store', [AmenitiesController::class, 'store'])->name('amenities.store');
-Route::post('/amenities/{id}/update', [AmenitiesController::class, 'update'])->name('amenities.update');
-Route::post('/amenities/{id}/destroy', [AmenitiesController::class, 'destroy'])->name('amenities.destroy');
-
-
 ## Property Status
 Route::get('/property/status/index', [PropertyStatusController::class, 'index'])->name('property.status.index');
 Route::get('/property/status/create', [PropertyStatusController::class, 'create'])->name('property.status.create');
@@ -111,3 +102,13 @@ Route::post('/property/label/store', [PropertyLabelController::class, 'store'])-
 Route::post('/property/label/{id}/update', [PropertyLabelController::class, 'update'])->name('property.label.update');
 Route::post('/property/label/{id}/destroy', [PropertyLabelController::class, 'destroy'])->name('property.label.destroy');
 Route::post('/property/label/{id}', [PropertyLabelController::class, 'changeStatus'])->name('property.label.status');
+
+## Property Amenities
+Route::get('/property/amenities/index', [PropertyAmenitiesController::class, 'index'])->name('property.amenities.index');
+Route::get('/property/amenities/create', [PropertyAmenitiesController::class, 'create'])->name('property.amenities.create');
+Route::get('/property/amenities/{id}/edit', [PropertyAmenitiesController::class, 'edit'])->name('property.amenities.edit');
+
+Route::post('/property/amenities/store', [PropertyAmenitiesController::class, 'store'])->name('property.amenities.store');
+Route::post('/property/amenities/{id}/update', [PropertyAmenitiesController::class, 'update'])->name('property.amenities.update');
+Route::post('/property/amenities/{id}/destroy', [PropertyAmenitiesController::class, 'destroy'])->name('property.amenities.destroy');
+Route::post('/property/amenities/status/{id}', [PropertyAmenitiesController::class, 'changeStatus'])->name('property.amenities.status');

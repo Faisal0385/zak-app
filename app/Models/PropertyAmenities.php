@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Amenities extends Model
+class PropertyAmenities extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'slug',
+        'icon_class'
+    ];
 }
