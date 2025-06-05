@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyStatusController;
+use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialMediaLinkController;
@@ -89,3 +90,13 @@ Route::post('/property/status/store', [PropertyStatusController::class, 'store']
 Route::post('/property/status/{id}/update', [PropertyStatusController::class, 'update'])->name('property.status.update');
 Route::post('/property/status/{id}/destroy', [PropertyStatusController::class, 'destroy'])->name('property.status.destroy');
 Route::post('/property/status/{id}', [PropertyStatusController::class, 'changeStatus'])->name('property.status');
+
+## Property Type
+Route::get('/property/type/index', [PropertyTypeController::class, 'index'])->name('property.type.index');
+Route::get('/property/type/create', [PropertyTypeController::class, 'create'])->name('property.type.create');
+Route::get('/property/type/{id}/edit', [PropertyTypeController::class, 'edit'])->name('property.type.edit');
+
+Route::post('/property/type/store', [PropertyTypeController::class, 'store'])->name('property.type.store');
+Route::post('/property/type/{id}/update', [PropertyTypeController::class, 'update'])->name('property.type.update');
+Route::post('/property/type/{id}/destroy', [PropertyTypeController::class, 'destroy'])->name('property.type.destroy');
+Route::post('/property/type/{id}', [PropertyTypeController::class, 'changeStatus'])->name('property.type.status');

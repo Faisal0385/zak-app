@@ -88,9 +88,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table-datatable.html">
+                    <a href="{{ route('property.type.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Adjust Purchase
+                        Add Property Type
                     </a>
                 </li>
                 <li>

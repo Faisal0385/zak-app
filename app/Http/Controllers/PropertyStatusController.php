@@ -45,13 +45,6 @@ class PropertyStatusController extends Controller
         return redirect()->back()->with('success', 'Property Status added successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

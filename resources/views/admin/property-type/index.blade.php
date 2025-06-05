@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">Property Status Page</h4>
-                    <a href="{{ route('property.status.create') }}" class="btn btn-dark btn-sm waves-effect waves-light"
+                    <h4 class="mb-0">Property Type Page</h4>
+                    <a href="{{ route('property.type.create') }}" class="btn btn-dark btn-sm waves-effect waves-light"
                         style="float: right">
-                        <i class="fas fa-plus-circle" style="font-size: 15px"></i> Add Property Status
+                        <i class="fas fa-plus-circle" style="font-size: 15px"></i> Add Property Type
                     </a>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">All Property Status List</h4>
+                        <h4 class="card-title">All Property Type List</h4>
                         <br />
                         <table id="datatable" class="table table-bordered dt-responsive nowrap"
                             style="
@@ -40,7 +40,7 @@
                             <thead>
                                 <tr class="text-white" style="background-color: teal">
                                     <th>Sl</th>
-                                    <th>Property Status</th>
+                                    <th>Property Type</th>
                                     <th>Slug</th>
                                     <th style="text-align: center">Action</th>
                                 </tr>
@@ -61,7 +61,7 @@
                                                 <i class="fa fa-check-circle m-0" style="font-size: 12px"></i>
                                             </a>
 
-                                            <a href="{{ route('property.status.edit', $property) }}"
+                                            <a href="{{ route('property.type.edit', $property) }}"
                                                 class="btn btn-sm btn-info" title="Edit Data">
                                                 <i class="fas fa-edit m-0" style="font-size: 12px"></i>
                                             </a>
@@ -90,7 +90,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <form
-                                                                action="{{ route('property.status.destroy', $property->id) }}"
+                                                                action="{{ route('property.type.destroy', $property->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <!-- This is required to spoof the DELETE method -->
@@ -131,7 +131,7 @@
 
     <script>
         function StatusChange(id) {
-            fetch(`/property/status/${id}`, {
+            fetch(`/property/type/${id}`, {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
