@@ -3,7 +3,9 @@
 use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertiesController;
@@ -14,6 +16,7 @@ use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialMediaLinkController;
+use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -121,7 +124,6 @@ Route::post('/project/{id}/update', [ProjectController::class, 'update'])->name(
 Route::post('/project/{id}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
 Route::post('/project/status/{id}', [ProjectController::class, 'changeStatus'])->name('project.status');
 
-
 ## Add Properties
 Route::get('/properties/index', [PropertiesController::class, 'index'])->name('properties.index');
 Route::get('/properties/{id}/edit', [PropertiesController::class, 'edit'])->name('properties.edit');
@@ -135,3 +137,35 @@ Route::post('/properties/{id}/video', [PropertiesController::class, 'updateVideo
 Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');
 Route::post('/properties/{id}/featured/image', [PropertiesController::class, 'updateFeaturedImage'])->name('properties.featured.image');
 Route::post('/properties/{id}/file', [PropertiesController::class, 'uploadPdfFile'])->name('properties.file');
+Route::post('/properties/{id}/gallery/image', [PropertiesController::class, 'storeGalleryImage'])->name('properties.gallery.image');
+
+## Country
+Route::get('/country/index', [CountryController::class, 'index'])->name('country.index');
+Route::get('/country/create', [CountryController::class, 'create'])->name('country.create');
+Route::get('/country/{id}/edit', [CountryController::class, 'edit'])->name('country.edit');
+
+Route::post('/country/store', [CountryController::class, 'store'])->name('country.store');
+Route::post('/country/{id}/update', [CountryController::class, 'update'])->name('country.update');
+Route::post('/country/{id}/destroy', [CountryController::class, 'destroy'])->name('country.destroy');
+Route::post('/country/{id}/status', [CountryController::class, 'changeStatus'])->name('country.status');
+
+## state
+Route::get('/state/index', [StateController::class, 'index'])->name('state.index');
+Route::get('/state/create', [StateController::class, 'create'])->name('state.create');
+Route::get('/state/{id}/edit', [StateController::class, 'edit'])->name('state.edit');
+
+Route::post('/state/store', [StateController::class, 'store'])->name('state.store');
+Route::post('/state/{id}/update', [StateController::class, 'update'])->name('state.update');
+Route::post('/state/{id}/destroy', [StateController::class, 'destroy'])->name('state.destroy');
+Route::post('/state/{id}/status', [StateController::class, 'changeStatus'])->name('state.status');
+
+## City
+Route::get('/city/index', [CityController::class, 'index'])->name('city.index');
+Route::get('/city/create', [CityController::class, 'create'])->name('city.create');
+Route::get('/city/{id}/edit', [CityController::class, 'edit'])->name('city.edit');
+
+Route::post('/city/store', [CityController::class, 'store'])->name('city.store');
+Route::post('/city/{id}/update', [CityController::class, 'update'])->name('city.update');
+Route::post('/city/{id}/destroy', [CityController::class, 'destroy'])->name('city.destroy');
+Route::post('/city/{id}/status', [CityController::class, 'changeStatus'])->name('city.status');
+

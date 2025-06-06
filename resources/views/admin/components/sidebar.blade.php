@@ -95,6 +95,24 @@
                         Add Property Amenities
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('country.index') }}">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add Country Name
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('state.index') }}">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add State Name
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('city.index') }}">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        Add City Name
+                    </a>
+                </li>
             </ul>
         </li>
         <li>

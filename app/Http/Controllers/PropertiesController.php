@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\Properties;
 use App\Models\PropertyAmenities;
+use App\Models\PropertyGalleryImage;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -225,6 +226,26 @@ class PropertiesController extends Controller
         $property->save();
 
         return redirect()->back()->with('success', 'PDF uploaded successfully!');
+    }
+
+    public function storeGalleryImage(Request $request, $id)
+    {
+        $request->validate([
+            'gallery_image' => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+        ]);
+
+        $property = Properties::findOrFail($id);
+
+        // Store image in public disk
+        $path = $request->file('gallery_image')->store('property_gallery', 'public');
+
+        // Save to PropertyGalleryImage model
+        $galleryImage = new PropertyGalleryImage();
+        $galleryImage->property_id = $property->id;
+        $galleryImage->gallery_image = 'storage/' . $path;
+        $galleryImage->save();
+
+        return redirect()->back()->with('success', 'Gallery image uploaded successfully!');
     }
 
 }

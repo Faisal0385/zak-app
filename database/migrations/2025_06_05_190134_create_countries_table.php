@@ -10,10 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('property_gallery_images', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->string('property_id')->nullable();
-            $table->string('gallery_image')->nullable();
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('property_gallery_images');
+        Schema::dropIfExists('countries');
     }
 };
