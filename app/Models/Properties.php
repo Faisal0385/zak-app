@@ -26,7 +26,7 @@ class Properties extends Model
         'garages_size',
         'year_built',
         'city_id',
-        'province_id',
+        'state_id',
         'country_id',
         'description',
         'address',

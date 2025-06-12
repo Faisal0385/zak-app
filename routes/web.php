@@ -13,6 +13,7 @@ use App\Http\Controllers\PropertyAmenitiesController;
 use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
 use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialMediaLinkController;
@@ -169,3 +170,5 @@ Route::post('/city/{id}/update', [CityController::class, 'update'])->name('city.
 Route::post('/city/{id}/destroy', [CityController::class, 'destroy'])->name('city.destroy');
 Route::post('/city/{id}/status', [CityController::class, 'changeStatus'])->name('city.status');
 
+## Search
+Route::get('/search', [SearchController::class, 'search'])->name('search');
