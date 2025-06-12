@@ -36,20 +36,20 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title" style="color: black">
-                            <b>Add Country</b>
+                            <b>Add Province/State</b>
                         </h4>
                         <hr class="m-1" />
                         <form id="myForm" method="POST" action="{{ route('city.store') }}">
                             @csrf
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label class="col-form-label">Country <sup class="text-danger">*</sup></label>
+                                    <label class="col-form-label">Province/State <sup class="text-danger">*</sup></label>
                                     <div class="form-group">
-                                        <select name="country_id" class="form-select form-select-sm js-select-all"
+                                        <select name="state_id" class="form-select form-select-sm js-select-all"
                                             aria-label="Default select example">
-                                            <option value="" selected>Pls Select Country</option>
-                                            @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}
+                                            <option value="" selected>Pls Select Province/State</option>
+                                            @foreach ($states as $state)
+                                                <option value="{{ $state->id }}">{{ $state->name }}
                                                 </option>
                                             @endforeach
                                         </select>

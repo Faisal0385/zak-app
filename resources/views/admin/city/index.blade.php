@@ -40,7 +40,7 @@
                             <thead>
                                 <tr class="text-white" style="background-color: teal">
                                     <th>Sl</th>
-                                    <th>Country</th>
+                                    <th>Province/State</th>
                                     <th>City</th>
                                     <th>Slug</th>
                                     <th style="text-align: center">Action</th>
@@ -52,7 +52,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>
-                                            {{ $city->country->name }}
+                                            {{ $city->state?->name ?? 'No Province/State Selected' }}
                                         </td>
                                         <td>
                                             {{ $city->name }}
@@ -117,7 +117,7 @@
                             <tfooter>
                                 <tr class="text-white" style="background-color: teal">
                                     <th>Sl</th>
-                                    <th>Country</th>
+                                    <th>Province/State</th>
                                     <th>City</th>
                                     <th>Slug</th>
                                     <th style="text-align: center">Action</th>

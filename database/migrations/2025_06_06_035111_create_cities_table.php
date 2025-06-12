@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->foreignId('country_id')->constrained()->onDelete('cascade'); // References `countries` table
+            $table->foreignId('state_id')->nullable()->constrained()->onDelete('cascade');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

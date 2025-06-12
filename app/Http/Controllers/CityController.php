@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
-use App\Models\Country;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Str;
 
@@ -23,8 +23,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        $countries = Country::where('status', '=', 'active')->orderBy('name', 'asc')->get();
-        return view('admin.city.create', compact('countries'));
+        $states = State::where('status', '=', 'active')->orderBy('name', 'asc')->get();
+        return view('admin.city.create', compact('states'));
     }
 
     /**
@@ -34,20 +34,21 @@ class CityController extends Controller
     {
         ## Validation
         $request->validate([
-            'country_id' => 'required|exists:countries,id',
-            'name' => 'required|string|max:255|unique:cities,name',
+            'state_id' => 'nullable|exists:states,id', ## now nullable
+            'name' => 'required|string|max:255',
         ]);
 
-        ## Create a new Country
+        ## Create a new City
         City::create([
             'name' => $request->name,
-            'country_id' => $request->country_id,
-            'slug' => Str::slug($request->name),
+            'state_id' => $request->state_id, ## will be null if not provided
+            'slug' => City::generateUniqueSlug($request->name),
         ]);
 
         ## Redirect back with success message
         return redirect()->back()->with('success', 'City name added successfully!');
     }
+
 
 
     /**
@@ -56,8 +57,8 @@ class CityController extends Controller
     public function edit(string $id)
     {
         $city = City::findOrFail($id);
-        $countries = Country::where('status', '=', 'active')->orderBy('name', 'asc')->get();
-        return view('admin.city.edit', compact('city', 'countries'));
+        $states = State::where('status', '=', 'active')->orderBy('name', 'asc')->get();
+        return view('admin.city.edit', compact('city', 'states'));
     }
 
     /**
@@ -65,25 +66,23 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        # Validate the input
         $request->validate([
-            'country_id' => 'required|exists:countries,id',
-            'name' => 'required|string|unique:cities,name,' . $id,
+            'state_id' => 'nullable|exists:states,id',
+            'name' => 'required|string|max:255',
         ]);
 
-        # Find the Country by ID
         $city = City::findOrFail($id);
 
-        # Update the record
         $city->update([
             'name' => $request->name,
-            'country_id' => $request->country_id,
-            'slug' => Str::slug($request->name),
+            'state_id' => $request->state_id,
+            'slug' => City::generateUniqueSlug($request->name, $id),
         ]);
 
-        # Redirect back with a success message
         return redirect()->back()->with('success', 'City name updated successfully!');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

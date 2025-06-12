@@ -104,7 +104,7 @@
                 <li>
                     <a href="{{ route('state.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Add State Name
+                        Add Province/State Name
                     </a>
                 </li>
                 <li>
@@ -115,7 +115,7 @@
                 </li>
             </ul>
         </li>
-        <li>
+        {{-- <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-grid-alt"></i>
                 </div>
@@ -129,7 +129,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
     </ul>
     <!--end navigation-->

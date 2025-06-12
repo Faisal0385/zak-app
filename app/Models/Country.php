@@ -13,12 +13,6 @@ class Country extends Model
         'slug',
     ];
 
-
-    public function city()
-    {
-        return $this->hasMany(City::class);
-    }
-
     public function state()
     {
         return $this->hasMany(State::class);
