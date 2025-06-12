@@ -179,9 +179,12 @@ Route::post('/city/{id}/status', [CityController::class, 'changeStatus'])->name(
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
-## Property Details
+## Project Details
 Route::get('/single/property/{id}/list', [SinglePropertyListController::class, 'index'])->name('single.property.list');
 
 
 ## Property list
 Route::get('/properties/list', [PropertiesListController::class, 'index'])->name('properties.list');
+
+## Property Detail
+Route::get('/property/{id}/detail', [PropertyDetailController::class, 'index'])->name('property.detail');

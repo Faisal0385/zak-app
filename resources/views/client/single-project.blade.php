@@ -94,7 +94,7 @@
       </p>
       <hr />
       <div class="mt-2">
-      <a href="./PD THE GROSVENOR.html" class="btn custom-secondary-btn">
+      <a href="{{ route('property.detail', $property->id) }}" class="btn custom-secondary-btn">
         Details
       </a>
       </div>
