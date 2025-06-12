@@ -183,7 +183,7 @@
 
     <script>
         function StatusChange(id) {
-            fetch(`/project/status/${id}`, {
+            fetch(`/properties/status/${id}`, {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'

@@ -136,10 +136,13 @@ Route::post('/properties/create', [PropertiesController::class, 'create'])->name
 
 Route::post('/properties/{id}/location', [PropertiesController::class, 'updateLocation'])->name('properties.location');
 Route::post('/properties/{id}/video', [PropertiesController::class, 'updateVideoURL'])->name('properties.video');
-Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');
+// Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');
 Route::post('/properties/{id}/featured/image', [PropertiesController::class, 'updateFeaturedImage'])->name('properties.featured.image');
 Route::post('/properties/{id}/file', [PropertiesController::class, 'uploadPdfFile'])->name('properties.file');
 Route::post('/properties/{id}/gallery/image', [PropertiesController::class, 'storeGalleryImage'])->name('properties.gallery.image');
+Route::post('/properties/status/{id}', [PropertiesController::class, 'changeStatus'])->name('properties.status');
+
+
 
 ## Country
 Route::get('/country/index', [CountryController::class, 'index'])->name('country.index');
