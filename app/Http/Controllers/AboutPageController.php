@@ -12,7 +12,8 @@ class AboutPageController extends Controller
      */
     public function index()
     {
-        return view('client.about-us');
+        $aboutDetails = AboutPage::firstOrFail();
+        return view('client.about-us', compact('aboutDetails'));
     }
 
     /**
