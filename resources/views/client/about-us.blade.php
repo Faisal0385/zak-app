@@ -4,7 +4,7 @@
   <div class="container-fluid mx-0 px-0">
     <!-- About Us Section -->
     <section class="about-section" style="background-image: url('{{ asset('assets/images/about-us.webp') }}');">
-    <h1>About Us</h1>
+    <h1>{{ $aboutDetails->page_title }}</h1>
     </section>
   </div>
 

@@ -5,14 +5,17 @@
         <div class="row align-items-center mb-4">
             <div class="col-12 col-md-2 text-center text-md-start">
                 <span class="logo">
-                    <img class="img-fluid mb-2" src="./assets/images/footer-logo.png" alt=""
+                    <img class="img-fluid mb-2" src="{{ asset($siteSettings->footer_logo) }}" alt="footer logo"
                         style="width: 100px; height:100px;">
                 </span>
             </div>
+
+            <!-- 
+            <p>{{ $siteSettings->company_name }}</p>
+            <p>{{ $siteSettings->office_address }}</p> -->
             <div class="col-12 col-md-10 tagline text-md-start">
-                <h1>ZAK REALTY</h1>
-                We are proudly selling luxury properties for more than 25 years.<br>
-                We'll fulfill your dreams more than anything else.
+                <h1>{{ $siteSettings->company_name }}</h1>
+                <p>{{ $siteSettings->company_subtitle }}</p>
             </div>
         </div>
         <div class="row">
@@ -24,17 +27,17 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="section-title">Corporate Office</div>
                 <p>
-                    <i class="fas fa-map-marker-alt icon"></i> Business Bay, Dubai
+                    <i class="fas fa-map-marker-alt icon"></i> {{ $siteSettings->office_address }}
                 </p>
                 <p>
-                    <i class="fas fa-envelope icon"></i> info@zakrealty.ae
+                    <i class="fas fa-envelope icon"></i> {{ $siteSettings->email }}
                 </p>
                 <p>
-                    <i class="fas fa-phone icon"></i> +971-50-582-1322 &nbsp; +971-56-430-0409
+                    <i class="fas fa-phone icon"></i> {{ $siteSettings->mobile }}
                 </p>
                 <p>
                     <i class="fas fa-clock icon"></i> Working Days:
-                    <br>Monday to Friday <br>10.00 AM to 5:00 PM
+                    <br>{{ $siteSettings->working_days }} <br>{{ $siteSettings->working_hours }}
                 </p>
             </div>
             <!-- Column 2: About Us -->
@@ -83,7 +86,7 @@
             </div>
             <!-- Right Side: Copyright Text -->
             <div class="col-12 col-md-6 text-center text-md-end">
-                <p class="footer-text">©2025 ZAK Realty Powered by KAF TECH BD</p>
+                <p class="footer-text">©2025 ZAK Realty Powered by {{ $siteSettings->powered_by }}</p>
             </div>
         </div>
     </div>

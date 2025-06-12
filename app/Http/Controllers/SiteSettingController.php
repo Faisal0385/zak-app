@@ -16,7 +16,7 @@ class SiteSettingController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'email' => 'nullable|email',
+            'email' => 'nullable|string',
             'footer_logo' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
             'banner_image' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
         ]);
