@@ -26,7 +26,7 @@ class Properties extends Model
         'garages_size',
         'year_built',
         'city_id',
-        'province_id',
+        'state_id',
         'country_id',
         'description',
         'address',
@@ -46,6 +46,11 @@ class Properties extends Model
     public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function propertyType()
+    {
+        return $this->belongsTo(PropertyType::class);
     }
 
     public function city()

@@ -8,7 +8,7 @@
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-lg-8">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <strong>Validation Error:</strong>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-lg-8">
                 @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}

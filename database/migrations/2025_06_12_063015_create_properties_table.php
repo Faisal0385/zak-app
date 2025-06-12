@@ -12,7 +12,6 @@ return new class extends Migration {
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-
             $table->unsignedBigInteger('project_id')->nullable();
             $table->string('property_name')->unique();
             $table->string('property_id')->nullable();
@@ -32,7 +31,7 @@ return new class extends Migration {
             $table->year('year_built')->nullable();
 
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->unsignedBigInteger('province_id')->nullable();
+            $table->unsignedBigInteger('state_id')->nullable();
             $table->unsignedBigInteger('country_id')->nullable();
 
             $table->text('description')->nullable();
@@ -55,7 +54,7 @@ return new class extends Migration {
             // Foreign Keys (optional cascading based on needs)
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('set null');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
-            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('set null');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('set null');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
         });
     }

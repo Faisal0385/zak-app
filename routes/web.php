@@ -6,13 +6,18 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\PropertiesListController;
 use App\Http\Controllers\PropertyAmenitiesController;
+use App\Http\Controllers\PropertyDetailController;
 use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
 use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SinglePropertyListController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialMediaLinkController;
@@ -30,9 +35,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.index');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -124,6 +127,24 @@ Route::post('/project/{id}/update', [ProjectController::class, 'update'])->name(
 Route::post('/project/{id}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
 Route::post('/project/status/{id}', [ProjectController::class, 'changeStatus'])->name('project.status');
 
+## Add Properties
+Route::get('/properties/index', [PropertiesController::class, 'index'])->name('properties.index');
+Route::get('/properties/{id}/edit', [PropertiesController::class, 'edit'])->name('properties.edit');
+
+Route::get('/properties/{id}/add', [PropertiesController::class, 'add'])->name('properties.add');
+
+Route::post('/properties/create', [PropertiesController::class, 'create'])->name('properties.create');
+
+Route::post('/properties/{id}/location', [PropertiesController::class, 'updateLocation'])->name('properties.location');
+Route::post('/properties/{id}/video', [PropertiesController::class, 'updateVideoURL'])->name('properties.video');
+// Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');
+Route::post('/properties/{id}/featured/image', [PropertiesController::class, 'updateFeaturedImage'])->name('properties.featured.image');
+Route::post('/properties/{id}/file', [PropertiesController::class, 'uploadPdfFile'])->name('properties.file');
+Route::post('/properties/{id}/gallery/image', [PropertiesController::class, 'storeGalleryImage'])->name('properties.gallery.image');
+Route::post('/properties/status/{id}', [PropertiesController::class, 'changeStatus'])->name('properties.status');
+
+
+
 ## Country
 Route::get('/country/index', [CountryController::class, 'index'])->name('country.index');
 Route::get('/country/create', [CountryController::class, 'create'])->name('country.create');
@@ -154,18 +175,16 @@ Route::post('/city/{id}/update', [CityController::class, 'update'])->name('city.
 Route::post('/city/{id}/destroy', [CityController::class, 'destroy'])->name('city.destroy');
 Route::post('/city/{id}/status', [CityController::class, 'changeStatus'])->name('city.status');
 
-## Add Properties
-Route::get('/properties/index', [PropertiesController::class, 'index'])->name('properties.index');
-Route::get('/properties/{id}/edit', [PropertiesController::class, 'edit'])->name('properties.edit');
+## Search
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
-Route::get('/properties/{id}/add', [PropertiesController::class, 'add'])->name('properties.add');
 
-Route::post('/properties/create', [PropertiesController::class, 'create'])->name('properties.create');
+## Project Details
+Route::get('/single/property/{id}/list', [SinglePropertyListController::class, 'index'])->name('single.property.list');
 
-Route::post('/properties/{id}/location', [PropertiesController::class, 'updateLocation'])->name('properties.location');
-Route::post('/properties/{id}/video', [PropertiesController::class, 'updateVideoURL'])->name('properties.video');
-Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');
-Route::post('/properties/{id}/featured/image', [PropertiesController::class, 'updateFeaturedImage'])->name('properties.featured.image');
-Route::post('/properties/{id}/file', [PropertiesController::class, 'uploadPdfFile'])->name('properties.file');
-Route::post('/properties/{id}/gallery/image', [PropertiesController::class, 'storeGalleryImage'])->name('properties.gallery.image');
-Route::post('/properties/{id}/label', [PropertiesController::class, 'updateLabel'])->name('properties.label');
+
+## Property list
+Route::get('/properties/list', [PropertiesListController::class, 'index'])->name('properties.list');
+
+## Property Detail
+Route::get('/property/{id}/detail', [PropertyDetailController::class, 'index'])->name('property.detail');

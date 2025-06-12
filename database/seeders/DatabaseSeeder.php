@@ -22,6 +22,21 @@ class DatabaseSeeder extends Seeder
         //     // CategorySeeder::class,
         // ]);
         // $this->call(AboutPageSeeder::class);
-        $this->call(SocialMediaLinkSeeder::class);
+        $this->call([
+            SocialMediaLinkSeeder::class,
+            SiteSettingsSeeder::class,
+            CategorySeeder::class,
+            AboutPageSeeder::class,
+            CountriesTableSeeder::class,
+            StatesTableSeeder::class,
+            CitiesTableSeeder::class,
+            PropertyAmenitiesTableSeeder::class,
+            PropertyTypesTableSeeder::class,
+            PropertyLabelsTableSeeder::class,
+            PropertyStatusesTableSeeder::class,
+            ProjectsTableSeeder::class,
+            PropertiesTableSeeder::class
+        ]);
+
     }
 }

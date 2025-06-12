@@ -17,8 +17,8 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        $projects = Project::latest()->orderBy('project_name', 'desc')->get();
-        $properties = Properties::latest()->where('status', '=', 'active')->get();
+        $projects = Project::where('status', '=', 'active')->latest()->orderBy('project_name', 'desc')->get();
+        $properties = Properties::latest()->get();
         return view('admin.properties.index', compact('projects', 'properties'));
     }
 
@@ -137,28 +137,18 @@ class PropertiesController extends Controller
         return redirect()->back()->with('success', 'Video URL updated successfully.');
     }
 
-    public function updateStatus(Request $request, $id)
+    public function changeStatus(Request $request, $id)
     {
-        dd($id);
-        // $request->validate([
-        //     'for_rent' => 'nullable|string',
-        //     'for_sale' => 'nullable|string',
-        // ]);
 
-        // $property = Properties::findOrFail($id);
+        $property = Properties::findOrFail($id);
+        $property->status = $property->status === 'active' ? 'inactive' : 'active';
+        $property->save();
 
-        // if ($request->has('for_rent')) {
-        //     $property->for_rent = $request->for_rent == 1 ? 0 : 1;
-        // }
-
-        // if ($request->has('for_sale')) {
-        //     $property->for_sale = $request->for_sale == 1 ? 0 : 1;
-        // }
-
-        // $property->save();
-
-        // ## Redirect back with success message
-        // return redirect()->back()->with('success', 'Property status updated successfully.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Status updated successfully.',
+            'status' => $property->status
+        ]);
     }
 
 
