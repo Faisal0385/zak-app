@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\PropertiesListController;
 use App\Http\Controllers\PropertyAmenitiesController;
 use App\Http\Controllers\PropertyDetailController;
 use App\Http\Controllers\PropertyLabelController;
@@ -180,3 +181,7 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 ## Property Details
 Route::get('/single/property/{id}/list', [SinglePropertyListController::class, 'index'])->name('single.property.list');
+
+
+## Property list
+Route::get('/properties/list', [PropertiesListController::class, 'index'])->name('properties.list');

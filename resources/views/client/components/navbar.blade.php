@@ -17,7 +17,7 @@
                     <a class="nav-link text-white" href="{{ route('about.index') }}">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Our Properties</a>
+                    <a class="nav-link text-white" href="{{ route('properties.list') }}">Our Properties</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('contact.view') }}">Contact</a>
