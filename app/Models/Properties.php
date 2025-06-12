@@ -48,6 +48,11 @@ class Properties extends Model
         return $this->belongsTo(Project::class);
     }
 
+    public function propertyType()
+    {
+        return $this->belongsTo(PropertyType::class);
+    }
+
     public function city()
     {
         return $this->belongsTo(City::class);

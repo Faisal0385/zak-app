@@ -6,14 +6,17 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\PropertyAmenitiesController;
+use App\Http\Controllers\PropertyDetailController;
 use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SinglePropertyListController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialMediaLinkController;
@@ -31,9 +34,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.index');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -172,3 +173,7 @@ Route::post('/city/{id}/status', [CityController::class, 'changeStatus'])->name(
 
 ## Search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+
+## Property Details
+Route::get('/single/property/{id}/list', [SinglePropertyListController::class, 'index'])->name('single.property.list');
