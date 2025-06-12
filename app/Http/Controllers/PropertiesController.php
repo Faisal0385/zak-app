@@ -185,28 +185,28 @@ class PropertiesController extends Controller
         return redirect()->back()->with('success', 'Featured image updated successfully!');
     }
 
-    public function updateFile(Request $request, $id)
-    {
-        $request->validate([
-            'featured_image' => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
-        ]);
+    // public function updateFile(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'featured_image' => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+    //     ]);
 
-        $property = Properties::findOrFail($id);
+    //     $property = Properties::findOrFail($id);
 
-        if ($request->hasFile('featured_image')) {
-            // Optionally delete old image:
-            if ($property->featured_image && file_exists(public_path($property->featured_image))) {
-                unlink(public_path($property->featured_image));
-            }
+    //     if ($request->hasFile('featured_image')) {
+    //         // Optionally delete old image:
+    //         if ($property->featured_image && file_exists(public_path($property->featured_image))) {
+    //             unlink(public_path($property->featured_image));
+    //         }
 
-            $path = $request->file('featured_image')->store('properties', 'public');
-            // Save relative path in DB
-            $property->featured_image = 'storage/' . $path;
-        }
-        $property->save();
+    //         $path = $request->file('featured_image')->store('properties', 'public');
+    //         // Save relative path in DB
+    //         $property->featured_image = 'storage/' . $path;
+    //     }
+    //     $property->save();
 
-        return redirect()->back()->with('success', 'Featured image updated successfully!');
-    }
+    //     return redirect()->back()->with('success', 'Featured image updated successfully!');
+    // }
 
     public function uploadPdfFile(Request $request, $id)
     {
@@ -246,6 +246,24 @@ class PropertiesController extends Controller
         $galleryImage->save();
 
         return redirect()->back()->with('success', 'Gallery image uploaded successfully!');
+    }
+
+
+    public function updateLabel(Request $request, $id)
+    {
+
+        $property = Properties::findOrFail($id);
+
+        $property->update([
+            'for_rent' => $request->has('for_rent') ? 1 : 0,
+            'for_sale' => $request->has('for_sale') ? 1 : 0,
+            'hot_offer' => $request->has('hot_offer') ? 1 : 0,
+            'sale' => $request->has('sale') ? 1 : 0,
+            'sold' => $request->has('sold') ? 1 : 0,
+        ]);
+
+        return redirect()->back()->with('success', 'Property labels updated successfully!');
+
     }
 
 }
