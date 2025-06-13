@@ -95,7 +95,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
 
-                                        <td>{{ $property->project->project_name }}</td>
+                                        <td>{{ $property->project?->project_name }}</td>
                                         <td>{{ $property->property_name }}</td>
                                         <td class="text-center">
 

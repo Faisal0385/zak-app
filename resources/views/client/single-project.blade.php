@@ -1,33 +1,44 @@
 @extends('client.master-layout')
 
 @section('content')
-    <div class="container-fluid p-0">
-        <div class="row m-1">
-            <div class="col-lg-12 p-0">
-                <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-FRONT.webp') }}"
-                                class="d-block w-100 rounded" alt="Knightsbridge" />
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('assets/images/kingsbridge/nautrax5.webp') }}" class="d-block w-100 rounded"
-                                alt="Knightsbridge" />
-                        </div>
-                        <!-- Add more carousel items as needed -->
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
+    <style>
+        .header-bg {
+            background-image: url("{{ asset('assets/images/properties-image.png') }}");
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-bg::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .header-bg h1,
+        .header-bg p {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+
+    <!-- Header -->
+    <div class="header-bg">
+        <div>
+            <h1>{{ $project->project_name }}</h1>
+            <p>
+                <a href="{{ route('home') }}" class="text-white">{{ $siteSettings->company_name }}</a>
+            </p>
         </div>
     </div>
 
@@ -71,7 +82,8 @@
                                 <i class="fa fa-bed me-1"></i> {{ $property->bedroom }} Bedrooms
                                 {{ $property->propertyType?->name }}
                             </p>
-                            <p class="price mb-2">Starting Price: {{ $property->before_price_label }} {{ $property->price }}
+                            <p class="price mb-2">Starting Price: {{ $property->before_price_label }}
+                                {{ $property->price }}
                                 {{ $property->price_unit }}</p>
                             <p class="price mb-2"></p>
                             <p class="card-text mb-2">

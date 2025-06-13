@@ -16,7 +16,7 @@ class PropertyTypeList extends Model
 
     public function property()
     {
-        return $this->belongsTo(Properties::class);
+        return $this->belongsTo(Properties::class, 'property_id');
     }
 
     public function propertyType()

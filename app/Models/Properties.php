@@ -50,39 +50,44 @@ class Properties extends Model
 
     public function propertyType()
     {
-        return $this->belongsTo(PropertyType::class);
+        return $this->belongsTo(PropertyType::class, 'property_id');
     }
 
     public function city()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class, 'city_id');
     }
 
     public function state()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(State::class, 'state_id');
     }
 
     public function country()
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
-    public function propertyTypes()
-    {
-        return $this->belongsToMany(PropertyType::class, 'property_type_lists')
-            ->withTimestamps();
-    }
+    // public function propertyTypes()
+    // {
+    //     return $this->belongsTo(PropertyTypeList::class, 'property_id');
+    // }
 
-    public function amenities()
-    {
-        return $this->belongsToMany(PropertyAmenitiesList::class, 'property_amenities_lists')
-            ->withTimestamps();
-    }
+    // public function amenities()
+    // {
+    //     return $this->belongsToMany(PropertyAmenitiesList::class, 'property_amenities_lists')
+    //         ->withTimestamps();
+    // }
+
+    // public function floorLayouts()
+    // {
+    //     return $this->hasMany(PropertyFloorLayout::class);
+    // }
+
 
     public function floorLayouts()
     {
-        return $this->hasMany(PropertyFloorLayout::class);
+        return $this->hasMany(PropertyFloorLayout::class, 'property_id');
     }
 
 }
