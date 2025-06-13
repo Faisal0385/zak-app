@@ -12,7 +12,9 @@ class SinglePropertyListController extends Controller
     {
         $project = Project::where('slug', '=', $slug)->firstOrFail('id');
         $project_id = $project->id;
-        $properties = Properties::where('project_id', '=', $project_id)->get();
+        $properties = Properties::where('project_id', $project_id)
+            ->with('propertyType')
+            ->get();
         $count = $properties->count();
 
         return view('client.single-project', compact('properties', 'count'));
