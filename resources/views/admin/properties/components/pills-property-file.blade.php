@@ -18,9 +18,17 @@
     <hr>
     <div>
         @if ($properties->file_attachment)
-            <a href="{{ asset($properties->file_attachment) }}" target="_blank" class="btn btn-sm btn-success">
-                View PDF
-            </a>
+            <div class="mb-2">
+                <a href="{{ asset($properties->file_attachment) }}" target="_blank" class="btn btn-sm btn-success">
+                    View PDF
+                </a>
+
+                <form action="{{ route('properties.file.delete', $properties->id) }}" method="POST"
+                    class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this PDF?');">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-danger">Delete PDF</button>
+                </form>
+            </div>
         @endif
     </div>
 </div>

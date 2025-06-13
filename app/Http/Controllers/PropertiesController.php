@@ -15,6 +15,7 @@ use App\Models\PropertyTypeList;
 use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PropertiesController extends Controller
 {
@@ -43,8 +44,9 @@ class PropertiesController extends Controller
         $results = PropertyTypeList::where('property_id', '=', $id)->get();
         $propertyAmenitiesLists = PropertyAmenitiesList::where('property_id', '=', $id)->get();
         $propertyFloorLayouts = PropertyFloorLayout::where('property_id', '=', $id)->get();
+        $propertyGalleryImages = PropertyGalleryImage::where('property_id', '=', $id)->get();
 
-        return view('admin.properties.add', compact('propertyAmenitiesLists', 'propertyFloorLayouts', 'properties', 'propertyTypes', 'propertyAmenities', 'countries', 'states', 'cities', 'results'));
+        return view('admin.properties.add', compact('propertyGalleryImages', 'propertyAmenitiesLists', 'propertyFloorLayouts', 'properties', 'propertyTypes', 'propertyAmenities', 'countries', 'states', 'cities', 'results'));
     }
 
 
@@ -280,5 +282,34 @@ class PropertiesController extends Controller
 
         $PropertyAmenitiesList->delete();
         return redirect()->back()->with('success', 'Property Amenity Deleted Successfully!');
+    }
+
+    public function deleteGalleryImage(Request $request, $id)
+    {
+        $image = PropertyGalleryImage::findOrFail($id);
+
+        // Delete file from public folder
+        if (File::exists(public_path($image->gallery_image))) {
+            File::delete(public_path($image->gallery_image));
+        }
+
+        // Delete from database
+        $image->delete();
+
+        return back()->with('success', 'Gallery image deleted successfully.');
+    }
+
+
+    public function deletePdfFile($id)
+    {
+        $property = Properties::findOrFail($id);
+
+        if ($property->file_attachment && File::exists(public_path($property->file_attachment))) {
+            File::delete(public_path($property->file_attachment));
+            $property->file_attachment = null;
+            $property->save();
+        }
+
+        return back()->with('success', 'PDF attachment deleted successfully.');
     }
 }

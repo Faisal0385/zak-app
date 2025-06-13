@@ -69,25 +69,18 @@
             <div class="col-12">
                 <h2>{{ $properties->property_name }} 4 Bedrooms Townhouse</h2>
                 <p><i class="bi bi-geo-alt"></i>{{ $properties->address }}</p>
-                <p>Property ID: {{ $properties->property_id }}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-FRONT.webp') }}"
-                                class="d-block w-100" alt="Property Image 1" />
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-BACK.webp') }}"
-                                class="d-block w-100" alt="Property Image 2" />
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-STREET-VIEW.webp') }}"
-                                class="d-block w-100" alt="Property Image 3" />
-                        </div>
+                        @foreach ($propertyGalleryImages as $key => $image)
+                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                <img src="{{ asset($image->gallery_image) }}" class="d-block w-100"
+                                    alt="Property Image {{ $key + 1 }}" />
+                            </div>
+                        @endforeach
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel"
                         data-bs-slide="prev">
@@ -100,20 +93,17 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+
                 <div class="carousel-thumbnails d-flex flex-wrap mt-3">
-                    <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-FRONT.webp') }}"
-                        data-bs-target="#propertyCarousel" data-bs-slide-to="0" alt="Thumbnail 1" />
-                    <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-BACK.webp') }}"
-                        data-bs-target="#propertyCarousel" data-bs-slide-to="1" alt="Thumbnail 2" />
-                    <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-STREET-VIEW.webp') }}"
-                        data-bs-target="#propertyCarousel" data-bs-slide-to="2" alt="Thumbnail 3" />
-                    <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-FRONT.webp') }}"
-                        data-bs-target="#propertyCarousel" data-bs-slide-to="0" alt="Thumbnail 1" />
-                    <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-BACK.webp') }}"
-                        data-bs-target="#propertyCarousel" data-bs-slide-to="1" alt="Thumbnail 2" />
+                    @foreach ($propertyGalleryImages as $key => $image)
+                        <img src="{{ asset($image->gallery_image) }}" data-bs-target="#propertyCarousel"
+                            data-bs-slide-to="{{ $key }}" alt="Thumbnail {{ $key + 1 }}"
+                            style="width: 100px; height: auto; cursor: pointer; margin-right: 5px;" />
+                    @endforeach
                 </div>
             </div>
         </div>
+
 
         <!-- Tabs Section -->
         <div class="row mt-5">
@@ -150,16 +140,16 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="propertyTabsContent">
-                    <div class="tab-pane fade show active" id="overview" role="tabpanel"
-                        aria-labelledby="overview-tab">
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                         <div class="p-2 my-2 border rounded-2">
                             <h4 style="font-size: 35px">Description</h4>
                             <p>{{ $properties->description }}</p>
                             <h4 style="font-size: 35px">Address</h4>
                             <p>
                                 {{ $properties->address }} <br />
-                                City: {{ $properties->city?->name }}<br />
-                                Country: {{ $properties->country?->name }}
+                                <strong> City:</strong> {{ $properties->city?->name }}<br />
+                                <strong>Country:</strong> {{ $properties->country?->name }}<br />
+                                <hr />
                             </p>
 
 
@@ -225,6 +215,17 @@
                                         <span>{{ $properties->year_built }}</span>
                                     </div>
                                 </div>
+                                @if ($properties->file_attachment)
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="bg-white p-2 m-1 rounded">
+                                            <strong>PDF File: </strong>
+                                            <a href="{{ asset($properties->file_attachment) }}" target="_blank"
+                                                class="btn btn-sm btn-success ">
+                                                View PDF
+                                            </a><br />
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -295,6 +296,7 @@
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="bg-white p-2 m-1 rounded">
                                                     <strong>Image: </strong>
+                                                    <hr />
                                                     <span><img class="img img-thumbnail"
                                                             src="{{ asset($propertyFloorLayout->floor_layout_image) }}"
                                                             alt="floor image"></span>

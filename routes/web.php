@@ -145,8 +145,28 @@ Route::post('/properties/{id}/location', [PropertiesController::class, 'updateLo
 Route::post('/properties/{id}/video', [PropertiesController::class, 'updateVideoURL'])->name('properties.video');
 // Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');
 Route::post('/properties/{id}/featured/image', [PropertiesController::class, 'updateFeaturedImage'])->name('properties.featured.image');
+
+
+
 Route::post('/properties/{id}/file', [PropertiesController::class, 'uploadPdfFile'])->name('properties.file');
+Route::post('/properties/{id}/file/delete', [PropertiesController::class, 'deletePdfFile'])->name('properties.file.delete');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::post('/properties/{id}/gallery/image', [PropertiesController::class, 'storeGalleryImage'])->name('properties.gallery.image');
+Route::post('/properties/{id}/gallery/image/delete', [PropertiesController::class, 'deleteGalleryImage'])->name('properties.gallery.delete');
+
 Route::post('/properties/status/{id}', [PropertiesController::class, 'changeStatus'])->name('properties.status');
 
 

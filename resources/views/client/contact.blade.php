@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mx-0 px-0">
         <!-- contact Us Section -->
-        <section class="about-section" style="background-image: url('{{ asset('assets/images/about-us.webp') }}');">
+        <section class="about-section" style="background-image: url('{{ asset($siteSettings->banner_image) }}');">
             <h1>Contact Us</h1>
         </section>
     </div>
@@ -13,17 +13,16 @@
             <div class="col-md-6">
                 <div class="card mb-2">
                     <div class="card-body">
-                        <h5 class="card-title">Zak Realty</h5>
+                        <h5 class="card-title">{{ $siteSettings->company_name }}</h5>
                         <p>
-                            <strong>Corporate Office:</strong> Floor-1, Al Diyar Business Centre. Business Bay, Dubai.<br />
-                            <strong>Email:</strong> info@zakrealty.co<br />
-                            <strong>Mobile:</strong> +971-50-582-1332, +971-56-430-4059
+                            <strong>Corporate Office:</strong> {{ $siteSettings->office_address }}<br />
+                            <strong>Email:</strong> {{ $siteSettings->email }}<br />
+                            <strong>Mobile:</strong> {{ $siteSettings->mobile }}
                         </p>
                         <div class="map-section">
                             <!-- Placeholder for map -->
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57783.170644027916!2d55.24021836953121!3d25.154340938278512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f682def25f457%3A0x3dd4c4097970950e!2sBusiness%20Bay%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sbd!4v1746889057209!5m2!1sen!2sbd"
-                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            <iframe src="{{ $siteSettings->google_map_iframe }}" width="100%" height="450"
+                                style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>

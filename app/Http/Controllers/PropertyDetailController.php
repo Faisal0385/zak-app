@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Properties;
 use App\Models\PropertyAmenitiesList;
 use App\Models\PropertyFloorLayout;
+use App\Models\PropertyGalleryImage;
 use App\Models\PropertyTypeList;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class PropertyDetailController extends Controller
         $propertyAmenitiesLists = PropertyAmenitiesList::where('property_id', '=', $id)->get();
         $propertyTypeLists = PropertyTypeList::where('property_id', '=', $id)->get();
         $propertyFloorLayouts = PropertyFloorLayout::where('property_id', '=', $id)->get();
+        $propertyGalleryImages = PropertyGalleryImage::where('property_id', '=', $id)->get();
 
-        return view('client.property-detail', compact('properties', 'propertyAmenitiesLists', 'propertyTypeLists', 'propertyFloorLayouts'));
+        return view('client.property-detail', compact('properties', 'propertyAmenitiesLists', 'propertyTypeLists', 'propertyFloorLayouts', 'propertyGalleryImages'));
     }
 }
