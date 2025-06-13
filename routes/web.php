@@ -48,6 +48,7 @@ require __DIR__ . '/auth.php';
 
 ## Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.view');
+Route::get('/admin/contact', [ContactController::class, 'view'])->name('admin.contact.view');
 Route::post('/contact/form/submit', [ContactController::class, 'store'])->name('contact.form.submit');
 
 

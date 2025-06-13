@@ -37,8 +37,6 @@
                 <div class="menu-title">Manage About</div>
             </a>
         </li>
-
-        <li class="menu-label">SETUP</li>
         <li>
             <a href="{{ route('settings.create') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
@@ -51,6 +49,14 @@
                 <div class="menu-title">Manage Social Link</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.contact.view') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Contact</div>
+            </a>
+        </li>
+
+        <li class="menu-label">SETUP</li>
 
         <li>
             <a class="has-arrow" href="javascript:;">
@@ -115,22 +121,6 @@
                 </li>
             </ul>
         </li>
-        {{-- <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-grid-alt"></i>
-                </div>
-                <div class="menu-title">Manage Product</div>
-            </a>
-            <ul>
-                <li>
-                    <a href="table-basic-table.html">
-                        <i class="bx bx-right-arrow-alt"></i>
-                        Product List
-                    </a>
-                </li>
-            </ul>
-        </li> --}}
-
     </ul>
     <!--end navigation-->
 </div>

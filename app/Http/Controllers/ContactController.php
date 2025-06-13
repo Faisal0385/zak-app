@@ -12,6 +12,12 @@ class ContactController extends Controller
         return view('client.contact');
     }
 
+    public function view()
+    {
+        $contactSubmissions = ContactSubmission::get();
+        return view('admin.contact.index', compact('contactSubmissions'));
+    }
+
 
     public function store(Request $request)
     {

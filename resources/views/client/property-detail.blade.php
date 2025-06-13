@@ -141,7 +141,7 @@
                 </ul>
                 <div class="tab-content" id="propertyTabsContent">
                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
-                        <div class="p-2 my-2 border rounded-2">
+                        <div class="p-3 my-2 shadow rounded-2">
                             <h4 style="font-size: 35px">Description</h4>
                             <p>{{ $properties->description }}</p>
                             <h4 style="font-size: 35px">Address</h4>
@@ -251,7 +251,7 @@
                     <div class="tab-pane fade" id="layout" role="tabpanel" aria-labelledby="layout-tab">
                         <div class="container">
                             <div class="row amenity-row">
-                                <div class="container mt-2 rounded-3">
+                                <div class="container shadow mt-2 rounded-3">
                                     <h2 class="mb-4">Layout</h2>
                                     @foreach ($propertyFloorLayouts as $propertyFloorLayout)
                                         <div class="row">
