@@ -29,31 +29,76 @@
                 </div>
             </div>
             <div class="col-md-6">
+                <div class="row">
+                    <div class="col">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Validation Error:</strong>
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Contact us</h5>
-                        <form>
+                        <h3 class="card-title">Contact us</h3>
+                        <form method="POST" action="{{ route('contact.form.submit') }}">
+                            @csrf
+
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Full Name" required />
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name" required
+                                    value="{{ old('full_name') }}" />
+                                @error('full_name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Mobile Number" required />
+                                <input type="text" name="mobile_number" class="form-control" placeholder="Mobile Number"
+                                    required value="{{ old('mobile_number') }}" />
+                                @error('mobile_number')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email Address" required />
+                                <input type="email" name="email" class="form-control" placeholder="Email Address"
+                                    value="{{ old('email') }}" />
+                                @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+
                             <div class="mb-3">
-                                <textarea class="form-control" placeholder="Your Message" rows="4" required></textarea>
+                                <textarea name="message" class="form-control" placeholder="Your Message" rows="4" required>{{ old('message') }}</textarea>
+                                @error('message')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Type: 4316" required />
-                                <p class="text-danger">
-                                    Please type the number 4316 in the box below to accept your
-                                    submission.
-                                </p>
+                                <input type="text" name="captcha_input" class="form-control" placeholder="Type: 4316"
+                                    required />
+                                <p class="text-danger">Please type the number 4316 in the box below to accept your
+                                    submission.</p>
                             </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+
                     </div>
                 </div>
             </div>
