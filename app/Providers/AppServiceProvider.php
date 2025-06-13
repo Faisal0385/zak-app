@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\SocialMediaLink;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\SiteSetting;
@@ -22,8 +23,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            $siteSettings = SiteSetting::first(); // Assuming there's only one row
-            $view->with('siteSettings', $siteSettings);
+            $siteSettings = SiteSetting::first(); // Assumes one row
+            $socialLinks = SocialMediaLink::all(); // Fetch all social media links
+
+            $view->with([
+                'siteSettings' => $siteSettings,
+                'socialLinks' => $socialLinks,
+            ]);
         });
     }
 }

@@ -13,4 +13,10 @@ class PropertyAmenities extends Model
         'slug',
         'icon_class'
     ];
+
+    public function properties()
+    {
+        return $this->belongsToMany(Properties::class, 'property_amenities_lists')
+            ->withTimestamps();
+    }
 }

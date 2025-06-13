@@ -13,4 +13,10 @@ class PropertyType extends Model
         'name',
         'slug',
     ];
+
+    public function properties()
+    {
+        return $this->belongsToMany(Properties::class, 'property_type_lists')
+            ->withTimestamps();
+    }
 }

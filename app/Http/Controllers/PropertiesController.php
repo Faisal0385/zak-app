@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Project;
 use App\Models\Properties;
 use App\Models\PropertyAmenities;
+use App\Models\PropertyAmenitiesList;
+use App\Models\PropertyFloorLayout;
 use App\Models\PropertyGalleryImage;
 use App\Models\PropertyType;
+use App\Models\PropertyTypeList;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,6 +25,7 @@ class PropertiesController extends Controller
     {
         $projects = Project::where('status', '=', 'active')->latest()->orderBy('project_name', 'desc')->get();
         $properties = Properties::latest()->get();
+
         return view('admin.properties.index', compact('projects', 'properties'));
     }
 
@@ -30,7 +37,14 @@ class PropertiesController extends Controller
         $properties = Properties::findOrFail($id);
         $propertyTypes = PropertyType::where('status', 'active')->get();
         $propertyAmenities = PropertyAmenities::where('status', 'active')->get();
-        return view('admin.properties.add', compact('properties', 'propertyTypes', 'propertyAmenities'));
+        $countries = Country::where('status', '=', 'active')->get();
+        $states = State::where('status', '=', 'active')->get();
+        $cities = City::where('status', '=', 'active')->get();
+        $results = PropertyTypeList::where('property_id', '=', $id)->get();
+        $propertyAmenitiesLists = PropertyAmenitiesList::where('property_id', '=', $id)->get();
+        $propertyFloorLayouts = PropertyFloorLayout::where('property_id', '=', $id)->get();
+
+        return view('admin.properties.add', compact('propertyAmenitiesLists', 'propertyFloorLayouts', 'properties', 'propertyTypes', 'propertyAmenities', 'countries', 'states', 'cities', 'results'));
     }
 
 
@@ -56,48 +70,6 @@ class PropertiesController extends Controller
         ## Redirect back with success message
         return redirect()->back()->with('success', 'Property added successfully.');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-
 
     public function updateLocation(Request $request, $id)
     {
@@ -151,7 +123,6 @@ class PropertiesController extends Controller
         ]);
     }
 
-
     public function updateFeaturedImage(Request $request, $id)
     {
         $request->validate([
@@ -174,29 +145,6 @@ class PropertiesController extends Controller
 
         return redirect()->back()->with('success', 'Featured image updated successfully!');
     }
-
-    // public function updateFile(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'featured_image' => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
-    //     ]);
-
-    //     $property = Properties::findOrFail($id);
-
-    //     if ($request->hasFile('featured_image')) {
-    //         // Optionally delete old image:
-    //         if ($property->featured_image && file_exists(public_path($property->featured_image))) {
-    //             unlink(public_path($property->featured_image));
-    //         }
-
-    //         $path = $request->file('featured_image')->store('properties', 'public');
-    //         // Save relative path in DB
-    //         $property->featured_image = 'storage/' . $path;
-    //     }
-    //     $property->save();
-
-    //     return redirect()->back()->with('success', 'Featured image updated successfully!');
-    // }
 
     public function uploadPdfFile(Request $request, $id)
     {
@@ -238,7 +186,6 @@ class PropertiesController extends Controller
         return redirect()->back()->with('success', 'Gallery image uploaded successfully!');
     }
 
-
     public function updateLabel(Request $request, $id)
     {
 
@@ -256,4 +203,82 @@ class PropertiesController extends Controller
 
     }
 
+    public function updateBasicInfo(Request $request, $id)
+    {
+        $property = Properties::findOrFail($id);
+
+        ## Validate input
+        $validated = $request->validate([
+            'property_id' => 'nullable|string|max:255',
+            'price' => 'nullable|numeric',
+            'before_price_label' => 'nullable|string|max:255',
+            'after_price_label' => 'nullable|string|max:255',
+            'price_unit' => 'nullable|string|max:50',
+            'price_on_call' => 'nullable|string',
+            'size' => 'nullable|numeric',
+            'land' => 'nullable|numeric',
+            'room' => 'nullable|integer',
+            'bedroom' => 'nullable|integer',
+            'bathroom' => 'nullable|integer',
+            'garages' => 'nullable|integer',
+            'garages_size' => 'nullable|numeric',
+            'year_built' => 'nullable|string',
+            'city_id' => 'nullable|integer',
+            'state_id' => 'nullable|integer',
+            'country_id' => 'nullable|integer',
+            'description' => 'nullable|string',
+        ]);
+
+        ## Update model fields
+        $property->fill($validated);
+
+        ## Handle checkbox separately (it may not be sent if unchecked)
+        $property->price_on_call = $request->has('price_on_call') ? 'yes' : 'no';
+
+        ## Save changes
+        $property->save();
+
+        ## Redirect with success message
+        return redirect()->back()->with('success', 'Property updated successfully!');
+    }
+
+    public function createTypeList(Request $request, $id)
+    {
+        Properties::findOrFail($id);
+
+        PropertyTypeList::create([
+            'property_id' => $id,
+            'property_type_id' => $request->property_type_id,
+        ]);
+
+        return redirect()->back()->with('success', 'Property Type Updated Successfully!');
+    }
+
+    public function deleteTypeList(Request $request, $id)
+    {
+        $PropertyTypeList = PropertyTypeList::findOrFail($id);
+
+        $PropertyTypeList->delete();
+        return redirect()->back()->with('success', 'Property Type Deleted Successfully!');
+    }
+
+    public function createAmenitiesList(Request $request, $id)
+    {
+        Properties::findOrFail($id);
+
+        PropertyAmenitiesList::create([
+            'property_id' => $id,
+            'property_amenity_id' => $request->property_amenity_id,
+        ]);
+
+        return redirect()->back()->with('success', 'Property Amenity Updated Successfully!');
+    }
+
+    public function deleteAmenitiesList(Request $request, $id)
+    {
+        $PropertyAmenitiesList = PropertyAmenitiesList::findOrFail($id);
+
+        $PropertyAmenitiesList->delete();
+        return redirect()->back()->with('success', 'Property Amenity Deleted Successfully!');
+    }
 }

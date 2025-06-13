@@ -1,6 +1,5 @@
 <div class="tab-pane fade" id="pills-location" role="tabpanel" aria-labelledby="pills-location-tab">
     <div class="shadow-sm p-2">
-
         <form method="POST" action="{{ route('properties.location', $properties->id) }}">
             @csrf
             <div class="row">

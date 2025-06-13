@@ -67,4 +67,22 @@ class Properties extends Model
     {
         return $this->belongsTo(Country::class);
     }
+
+    public function propertyTypes()
+    {
+        return $this->belongsToMany(PropertyType::class, 'property_type_lists')
+            ->withTimestamps();
+    }
+
+    public function amenities()
+    {
+        return $this->belongsToMany(PropertyAmenitiesList::class, 'property_amenities_lists')
+            ->withTimestamps();
+    }
+
+    public function floorLayouts()
+    {
+        return $this->hasMany(PropertyFloorLayout::class);
+    }
+
 }

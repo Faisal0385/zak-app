@@ -13,6 +13,7 @@ use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\PropertiesListController;
 use App\Http\Controllers\PropertyAmenitiesController;
 use App\Http\Controllers\PropertyDetailController;
+use App\Http\Controllers\PropertyFloorLayoutController;
 use App\Http\Controllers\PropertyLabelController;
 use App\Http\Controllers\PropertyStatusController;
 use App\Http\Controllers\PropertyTypeController;
@@ -127,6 +128,11 @@ Route::post('/project/{id}/update', [ProjectController::class, 'update'])->name(
 Route::post('/project/{id}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
 Route::post('/project/status/{id}', [ProjectController::class, 'changeStatus'])->name('project.status');
 
+
+
+
+
+
 ## Add Properties
 Route::get('/properties/index', [PropertiesController::class, 'index'])->name('properties.index');
 Route::get('/properties/{id}/edit', [PropertiesController::class, 'edit'])->name('properties.edit');
@@ -142,6 +148,27 @@ Route::post('/properties/{id}/featured/image', [PropertiesController::class, 'up
 Route::post('/properties/{id}/file', [PropertiesController::class, 'uploadPdfFile'])->name('properties.file');
 Route::post('/properties/{id}/gallery/image', [PropertiesController::class, 'storeGalleryImage'])->name('properties.gallery.image');
 Route::post('/properties/status/{id}', [PropertiesController::class, 'changeStatus'])->name('properties.status');
+
+
+Route::post('/properties/update/{id}/info', [PropertiesController::class, 'updateBasicInfo'])->name('properties.update.info');
+Route::post('/properties/update/{id}/label', [PropertiesController::class, 'updateLabel'])->name('properties.update.label');
+Route::post('/properties/update/{id}/type', [PropertiesController::class, 'createTypeList'])->name('properties.update.type');
+Route::post('/properties/{id}/delete/type', [PropertiesController::class, 'deleteTypeList'])->name('properties.delete.type');
+Route::post('/properties/create/{id}/amenities', [PropertiesController::class, 'createAmenitiesList'])->name('properties.update.amenities');
+Route::post('/properties/{id}/delete/amenities', [PropertiesController::class, 'deleteAmenitiesList'])->name('properties.delete.amenities');
+
+
+
+
+
+Route::post('/properties/read/{id}/layout', [PropertyFloorLayoutController::class, 'index'])->name('properties.read.layout');
+Route::post('/properties/create/{id}/layout', [PropertyFloorLayoutController::class, 'store'])->name('properties.create.layout');
+Route::get('/properties/edit/{id}/layout', [PropertyFloorLayoutController::class, 'edit'])->name('properties.edit.layout');
+Route::post('/properties/update/{id}/layout', [PropertyFloorLayoutController::class, 'update'])->name('properties.update.layout');
+Route::post('/properties/delete/{id}/layout', [PropertyFloorLayoutController::class, 'destroy'])->name('properties.delete.layout');
+
+
+
 
 
 

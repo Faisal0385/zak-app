@@ -40,14 +40,15 @@
 
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link border-0 m-1 active" id="pills-home-tab" data-bs-toggle="pill"
+                                <button class="nav-link border-0 m-1 " id="pills-home-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                                     aria-selected="true">Basic Information</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link border-0 m-1" id="pills-property-type-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-property-type" type="button" role="tab"
-                                    aria-controls="pills-property-type" aria-selected="false">Property Type</button>
+                                    aria-controls="pills-property-type" aria-selected="false">Property
+                                    Type</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link border-0 m-1" id="pills-property-amenities-tab"
@@ -60,11 +61,7 @@
                                     data-bs-target="#pills-property-status" type="button" role="tab"
                                     aria-controls="pills-property-status" aria-selected="false">Property Status</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link border-0 m-1" id="pills-property-label-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-property-label" type="button" role="tab"
-                                    aria-controls="pills-property-label" aria-selected="false">Property Label</button>
-                            </li>
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link border-0 m-1" id="pills-location-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-location" type="button" role="tab"
@@ -91,6 +88,12 @@
                                     data-bs-target="#pills-property-file" type="button" role="tab"
                                     aria-controls="pills-property-file" aria-selected="false">File Attachment</button>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link border-0 m-1 active" id="pills-property-layout-tab"
+                                    data-bs-toggle="pill" data-bs-target="#pills-property-layout" type="button"
+                                    role="tab" aria-controls="pills-property-layout" aria-selected="false">Floor
+                                    Layout</button>
+                            </li>
                         </ul>
 
                         <div class="tab-content" id="pills-tabContent">
@@ -98,7 +101,7 @@
                             @include('admin.properties.components.pills-property-type')
                             @include('admin.properties.components.pills-property-status')
                             @include('admin.properties.components.pills-property-featured-image')
-                            @include('admin.properties.components.pills-property-label')
+                            @include('admin.properties.components.pills-property-layout')
                             @include('admin.properties.components.pills-property-video')
                             @include('admin.properties.components.pills-property-file')
                             @include('admin.properties.components.pills-property-amenities')

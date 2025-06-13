@@ -28,7 +28,7 @@ return new class extends Migration {
             $table->integer('bathroom')->nullable();
             $table->integer('garages')->nullable();
             $table->string('garages_size')->nullable();
-            $table->year('year_built')->nullable();
+            $table->string('year_built')->nullable();
 
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('state_id')->nullable();

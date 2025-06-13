@@ -9,10 +9,6 @@
                         style="width: 100px; height:100px;">
                 </span>
             </div>
-
-            <!-- 
-            <p>{{ $siteSettings->company_name }}</p>
-            <p>{{ $siteSettings->office_address }}</p> -->
             <div class="col-12 col-md-10 tagline text-md-start">
                 <h1>{{ $siteSettings->company_name }}</h1>
                 <p>{{ $siteSettings->company_subtitle }}</p>
@@ -79,14 +75,14 @@
         <div class="row align-items-center">
             <!-- Left Side: Social Media Icons -->
             <div class="col-12 col-md-6 text-center text-md-start">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                @foreach ($socialLinks as $link)
+                    <a href="{{ $link->url }}" target="_blank"><i class="{{ $link->icon_class }}"></i></a>
+                @endforeach
             </div>
             <!-- Right Side: Copyright Text -->
             <div class="col-12 col-md-6 text-center text-md-end">
-                <p class="footer-text">©2025 ZAK Realty Powered by {{ $siteSettings->powered_by }}</p>
+                <p class="footer-text">© {{ date('Y') }} {{ $siteSettings->company_name }} Powered by
+                    {{ $siteSettings->powered_by }}</p>
             </div>
         </div>
     </div>
