@@ -69,6 +69,11 @@
                     </div>
                 </div>
             @endforeach
+
+            <!-- Pagination Links -->
+            <div class="d-flex justify-content-center mt-5">
+                {{ $properties->links() }}
+            </div>
         </div>
     </div>
 @endsection

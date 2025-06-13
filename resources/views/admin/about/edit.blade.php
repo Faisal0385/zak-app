@@ -22,26 +22,29 @@
                             <div class="mb-3">
                                 <label for="our_story" class="col-form-label">Our Story</label>
                                 <div class="form-group">
-                                    <textarea type="text" name="our_story" id="our_story" class="form-control form-control-sm" placeholder="Our Story">{{ $aboutpage->our_story }}</textarea>
+                                    <textarea type="text" rows="4" name="our_story" id="our_story" class="form-control form-control-sm"
+                                        placeholder="Our Story">{{ $aboutpage->our_story }}</textarea>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="mission" class="col-form-label">Mission</label>
                                 <div class="form-group">
-                                    <textarea type="text" name="mission" id="mission" class="form-control form-control-sm" placeholder="Mission">{{ $aboutpage->mission }}</textarea>
+                                    <textarea type="text" rows="4" name="mission" id="mission" class="form-control form-control-sm"
+                                        placeholder="Mission">{{ $aboutpage->mission }}</textarea>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="vision" class="col-form-label">Vision</label>
                                 <div class="form-group">
-                                    <textarea type="text" name="vision" id="vision" class="form-control form-control-sm" placeholder="Vision">{{ $aboutpage->vision }}</textarea>
+                                    <textarea type="text" rows="4" name="vision" id="vision" class="form-control form-control-sm"
+                                        placeholder="Vision">{{ $aboutpage->vision }}</textarea>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="video_link" class="col-form-label">Video Link</label>
                                 <div class="form-group">
-                                    <textarea type="text" name="video_link" id="video_link" class="form-control form-control-sm"
+                                    <textarea type="text" rows="4" name="video_link" id="video_link" class="form-control form-control-sm"
                                         placeholder="Video Link">{{ $aboutpage->video_link }}</textarea>
                                 </div>
                             </div>

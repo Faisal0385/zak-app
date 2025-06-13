@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\SocialMediaLink;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\SiteSetting;
@@ -31,5 +32,7 @@ class AppServiceProvider extends ServiceProvider
                 'socialLinks' => $socialLinks,
             ]);
         });
+
+        Paginator::useBootstrap();
     }
 }

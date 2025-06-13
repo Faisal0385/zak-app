@@ -310,10 +310,18 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="video-tab">
-                        <iframe width="100%" height="450" src="{{ $properties->video_url }}"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <div class="row">
+                            <div class="col-lg-12 pt-3">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="100%" height="315"
+                                        src="https://www.youtube.com/embed/{{ $properties->video_url }}"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
