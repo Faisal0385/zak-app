@@ -78,7 +78,7 @@ Route::post('/slider/status/{id}', [SliderController::class, 'changeStatus'])->n
 
 ## About
 Route::resource('about', AboutPageController::class);
-Route::post('/admin/about/update/{id}', [AboutPageController::class, 'update'])->name('about.update');
+Route::post('/admin/about/update/{id}', [AboutPageController::class, 'update'])->name('admin.about.update');
 
 ## SiteSetting
 Route::get('/settings/create', [SiteSettingController::class, 'create'])->name('settings.create');

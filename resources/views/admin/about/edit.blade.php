@@ -10,7 +10,7 @@
                         </h4>
                         <hr class="m-1" />
                         <form id="myForm" enctype="multipart/form-data" method="POST"
-                            action="{{ route('about.update', $aboutpage->id) }}">
+                            action="{{ route('admin.about.update', $aboutpage->id) }}">
                             @csrf
                             <div class="mb-3">
                                 <label for="title" class="col-form-label">Page Title</label>
