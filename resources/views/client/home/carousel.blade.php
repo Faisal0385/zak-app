@@ -10,7 +10,8 @@
                                     alt="{{ $slider->title }}" />
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ $slider->title }}</h5>
-                                    <p><i class="fa-solid fa-magnifying-glass"></i> {{ $slider->sub_title }}</p>
+                                    <p><i class="fa-solid fa-building-user" style="color: #7d7dff"></i>
+                                        {{ $slider->sub_title }}</p>
                                 </div>
                             </div>
                         @endforeach

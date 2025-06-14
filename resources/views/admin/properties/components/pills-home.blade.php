@@ -1,4 +1,4 @@
-<div class="tab-pane " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <div class="shadow-sm p-2">
         <form id="myForm" method="POST" action="{{ route('properties.update.info', $properties->id) }}">
             @csrf

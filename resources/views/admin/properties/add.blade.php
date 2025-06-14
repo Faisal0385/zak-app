@@ -40,7 +40,7 @@
 
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link border-0 m-1 " id="pills-home-tab" data-bs-toggle="pill"
+                                <button class="nav-link border-0 m-1 active" id="pills-home-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                                     aria-selected="true">Basic Information</button>
                             </li>
@@ -89,7 +89,7 @@
                                     aria-controls="pills-property-file" aria-selected="false">File Attachment</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link border-0 m-1 active" id="pills-property-layout-tab"
+                                <button class="nav-link border-0 m-1" id="pills-property-layout-tab"
                                     data-bs-toggle="pill" data-bs-target="#pills-property-layout" type="button"
                                     role="tab" aria-controls="pills-property-layout" aria-selected="false">Floor
                                     Layout</button>

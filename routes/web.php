@@ -36,6 +36,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+###################### Frontend Route
+###################### Frontend Route
+###################### Frontend Route
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
@@ -48,11 +53,18 @@ require __DIR__ . '/auth.php';
 
 ## Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.view');
-Route::get('/admin/contact', [ContactController::class, 'view'])->name('admin.contact.view');
 Route::post('/contact/form/submit', [ContactController::class, 'store'])->name('contact.form.submit');
 
 
-## Admin
+###################### Admin Route
+###################### Admin Route
+###################### Admin Route
+
+## Admin Contact
+Route::get('/admin/contact', [ContactController::class, 'view'])->name('admin.contact.view');
+
+
+## Admin Dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
 ## Category
@@ -131,46 +143,22 @@ Route::post('/project/{id}/destroy', [ProjectController::class, 'destroy'])->nam
 Route::post('/project/status/{id}', [ProjectController::class, 'changeStatus'])->name('project.status');
 
 
-
-
-
-
 ## Add Properties
 Route::get('/properties/index', [PropertiesController::class, 'index'])->name('properties.index');
 Route::get('/properties/{id}/edit', [PropertiesController::class, 'edit'])->name('properties.edit');
-
 Route::get('/properties/{id}/add', [PropertiesController::class, 'add'])->name('properties.add');
-
 Route::post('/properties/create', [PropertiesController::class, 'create'])->name('properties.create');
-
 Route::post('/properties/{id}/location', [PropertiesController::class, 'updateLocation'])->name('properties.location');
 Route::post('/properties/{id}/video', [PropertiesController::class, 'updateVideoURL'])->name('properties.video');
 // Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');
 Route::post('/properties/{id}/featured/image', [PropertiesController::class, 'updateFeaturedImage'])->name('properties.featured.image');
-
-
-
 Route::post('/properties/{id}/file', [PropertiesController::class, 'uploadPdfFile'])->name('properties.file');
 Route::post('/properties/{id}/file/delete', [PropertiesController::class, 'deletePdfFile'])->name('properties.file.delete');
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Route::post('/properties/{id}/gallery/image', [PropertiesController::class, 'storeGalleryImage'])->name('properties.gallery.image');
 Route::post('/properties/{id}/gallery/image/delete', [PropertiesController::class, 'deleteGalleryImage'])->name('properties.gallery.delete');
 
 Route::post('/properties/status/{id}', [PropertiesController::class, 'changeStatus'])->name('properties.status');
-
 
 Route::post('/properties/update/{id}/info', [PropertiesController::class, 'updateBasicInfo'])->name('properties.update.info');
 Route::post('/properties/update/{id}/label', [PropertiesController::class, 'updateLabel'])->name('properties.update.label');
@@ -178,21 +166,11 @@ Route::post('/properties/update/{id}/type', [PropertiesController::class, 'creat
 Route::post('/properties/{id}/delete/type', [PropertiesController::class, 'deleteTypeList'])->name('properties.delete.type');
 Route::post('/properties/create/{id}/amenities', [PropertiesController::class, 'createAmenitiesList'])->name('properties.update.amenities');
 Route::post('/properties/{id}/delete/amenities', [PropertiesController::class, 'deleteAmenitiesList'])->name('properties.delete.amenities');
-
-
-
-
-
 Route::post('/properties/read/{id}/layout', [PropertyFloorLayoutController::class, 'index'])->name('properties.read.layout');
 Route::post('/properties/create/{id}/layout', [PropertyFloorLayoutController::class, 'store'])->name('properties.create.layout');
 Route::get('/properties/edit/{id}/layout', [PropertyFloorLayoutController::class, 'edit'])->name('properties.edit.layout');
 Route::post('/properties/update/{id}/layout', [PropertyFloorLayoutController::class, 'update'])->name('properties.update.layout');
 Route::post('/properties/delete/{id}/layout', [PropertyFloorLayoutController::class, 'destroy'])->name('properties.delete.layout');
-
-
-
-
-
 
 ## Country
 Route::get('/country/index', [CountryController::class, 'index'])->name('country.index');

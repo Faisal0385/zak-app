@@ -1,5 +1,4 @@
-<div class="tab-pane fade show active" id="pills-property-layout" role="tabpanel"
-    aria-labelledby="pills-property-layout-tab">
+<div class="tab-pane fade" id="pills-property-layout" role="tabpanel" aria-labelledby="pills-property-layout-tab">
 
     <div class="row m-3">
         <h5>Add Floor Layout</h5>
