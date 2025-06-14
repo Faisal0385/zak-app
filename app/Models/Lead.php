@@ -16,4 +16,9 @@ class Lead extends Model
         'property_type_id',
         'budget'
     ];
+
+    public function propertyType()
+    {
+        return $this->belongsTo(PropertyType::class);
+    }
 }

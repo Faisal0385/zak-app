@@ -25,7 +25,7 @@
             <div class="card radius-10 bg-gradient-orange">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0 text-white">832</h5>
+                        <h5 class="mb-0 text-white">{{ $properties ?? 0 }}</h5>
                         <div class="ms-auto">
                             <i class='bx bx-dollar fs-3 text-white'></i>
                         </div>

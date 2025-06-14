@@ -19,4 +19,10 @@ class PropertyType extends Model
         return $this->belongsToMany(Properties::class, 'property_type_lists')
             ->withTimestamps();
     }
+
+
+    public function leads()
+    {
+        return $this->hasMany(Lead::class);
+    }
 }

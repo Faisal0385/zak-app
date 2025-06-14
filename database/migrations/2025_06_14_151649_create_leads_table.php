@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->foreign('property_type_id')->references('id')->on('property_types')->onDelete('cascade');
 
             $table->string('budget'); // Example: "500k - 1M AED"
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }

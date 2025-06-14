@@ -25,12 +25,12 @@
                 <div class="menu-title">Manage Slider</div>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="{{ route('categories.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
                 <div class="menu-title">Manage Category</div>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="{{ route('about.create') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
@@ -46,13 +46,19 @@
         <li>
             <a href="{{ route('social.link.index') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Manage Social Link</div>
+                <div class="menu-title">Manage Social Links</div>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.contact.view') }}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i></div>
-                <div class="menu-title">Contact</div>
+                <div class="menu-title">Contact List</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('lead.form.index') }}">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Lead List</div>
             </a>
         </li>
 
@@ -104,19 +110,19 @@
                 <li>
                     <a href="{{ route('country.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Add Country Name
+                        Add Country
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('state.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Add Province/State Name
+                        Add Province/State
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('city.index') }}">
                         <i class="bx bx-right-arrow-alt"></i>
-                        Add City Name
+                        Add City
                     </a>
                 </li>
             </ul>

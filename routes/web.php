@@ -220,3 +220,5 @@ Route::get('/property/{id}/detail', [PropertyDetailController::class, 'index'])-
 
 ## lead.form.store
 Route::post('/lead/form', [LeadController::class, 'store'])->name('lead.form.store');
+Route::get('/lead/form/index', [LeadController::class, 'view'])->name('lead.form.index');
+Route::post('/lead/form/{id}/status', [LeadController::class, 'changeStatus']);
