@@ -174,9 +174,16 @@
                                 <i class="fa fa-bed me-1"></i> {{ $property->bedroom }} Bedrooms
                                 {{ $property->propertyType?->name }}
                             </p>
-                            <p class="price mb-2">Starting Price: {{ $property->before_price_label }}
-                                {{ $property->price }}
-                                {{ $property->price_unit }}</p>
+                            {{-- --}}
+                            @if ($property->price_on_call == 'yes')
+                                <p class="price mb-2">Call For Price</p>
+                            @else
+                                <p class="price mb-2">Starting Price: {{ $property->before_price_label }}
+                                    {{ $property->price }}
+                                    {{ $property->price_unit }}
+                                </p>
+                            @endif
+
                             <p class="price mb-2"></p>
                             <p class="card-text mb-2">
                                 <i class="bi bi-geo-alt"></i> {{ $property->city?->name }}
@@ -212,42 +219,6 @@
                 }
             );
             modal.show();
-
-            // Handle form submission
-            // const form = document.getElementById("accessForm");
-            // form.addEventListener("submit", function(event) {
-            //     event.preventDefault();
-
-            //     // Basic client-side validation
-            //     const name = document.getElementById("name").value;
-            //     const email = document.getElementById("email").value;
-            //     const phone = document.getElementById("phone").value;
-
-            //     if (name && email && phone) {
-            //         // Optionally, send form data to a server here using fetch or XMLHttpRequest
-            //         // Example:
-            //         /*
-            //         fetch('/submit-form', {
-            //           method: 'POST',
-            //           headers: { 'Content-Type': 'application/json' },
-            //           body: JSON.stringify({ name, email, phone })
-            //         })
-            //         .then(response => response.json())
-            //         .then(data => {
-            //           console.log('Form submitted:', data);
-            //         })
-            //         .catch(error => {
-            //           console.error('Error:', error);
-            //         });
-            //         */
-
-            //         // Close modal and show content
-            //         modal.hide();
-            //         document.getElementById("main-content").style.display = "block";
-            //     } else {
-            //         alert("Please fill out all fields.");
-            //     }
-            // });
         });
     </script>
 @endsection

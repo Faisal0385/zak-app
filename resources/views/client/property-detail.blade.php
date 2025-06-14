@@ -232,7 +232,7 @@
                     <div class="tab-pane fade" id="features" role="tabpanel" aria-labelledby="features-tab">
                         <div class="container">
                             <div class="row amenity-row">
-                                <div class="container mt-2 rounded-3">
+                                <div class="container shadow mt-2 rounded-3 p-3">
                                     <h2 class="mb-4">Features and Amenities</h2>
                                     <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -282,24 +282,52 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="bg-white p-2 m-1 rounded">
-                                                    <strong>Bathroom: </strong>
-                                                    <span>{{ $propertyFloorLayout->bathroom }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="bg-white p-2 m-1 rounded">
                                                     <strong>Description: </strong>
                                                     <span>{{ $propertyFloorLayout->description }}</span>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="bg-white p-2 m-1 rounded">
+                                                    <strong>Bathroom: </strong>
+                                                    <span>{{ $propertyFloorLayout->bathroom }}</span>
+                                                </div>
+                                            </div>
+
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="bg-white p-2 m-1 rounded">
                                                     <strong>Image: </strong>
                                                     <hr />
-                                                    <span><img class="img img-thumbnail"
+
+                                                    <!-- Thumbnail trigger -->
+                                                    <a href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#floorImageModal{{ $propertyFloorLayout->id }}">
+                                                        <img class="img img-thumbnail"
                                                             src="{{ asset($propertyFloorLayout->floor_layout_image) }}"
-                                                            alt="floor image"></span>
+                                                            alt="floor image" style="max-width: 200px;">
+                                                    </a>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade"
+                                                        id="floorImageModal{{ $propertyFloorLayout->id }}" tabindex="-1"
+                                                        aria-labelledby="floorImageModalLabel{{ $propertyFloorLayout->id }}"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body text-center">
+                                                                    <img src="{{ asset($propertyFloorLayout->floor_layout_image) }}"
+                                                                        class="img-fluid rounded" alt="floor image full">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button"
+                                                                        class="btn btn-secondary btn-sm"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>
