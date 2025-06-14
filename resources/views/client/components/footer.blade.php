@@ -5,13 +5,13 @@
         <div class="row align-items-center mb-4">
             <div class="col-12 col-md-2 text-center text-md-start">
                 <span class="logo">
-                    <img class="img-fluid mb-2" src="{{ asset($siteSettings->footer_logo) }}" alt="footer logo"
+                    <img class="img-fluid mb-2" src="{{ asset($siteSettings?->footer_logo) }}" alt="footer logo"
                         style="width: 100px; height:100px;">
                 </span>
             </div>
             <div class="col-12 col-md-10 tagline text-md-start">
-                <h1>{{ $siteSettings->company_name }}</h1>
-                <p>{{ $siteSettings->company_subtitle }}</p>
+                <h1>{{ $siteSettings?->company_name }}</h1>
+                <p>{{ $siteSettings?->company_subtitle }}</p>
             </div>
         </div>
         <div class="row">
@@ -23,17 +23,17 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="section-title">Corporate Office</div>
                 <p>
-                    <i class="fas fa-map-marker-alt icon"></i> {{ $siteSettings->office_address }}
+                    <i class="fas fa-map-marker-alt icon"></i> {{ $siteSettings?->office_address }}
                 </p>
                 <p>
-                    <i class="fas fa-envelope icon"></i> {{ $siteSettings->email }}
+                    <i class="fas fa-envelope icon"></i> {{ $siteSettings?->email }}
                 </p>
                 <p>
-                    <i class="fas fa-phone icon"></i> {{ $siteSettings->mobile }}
+                    <i class="fas fa-phone icon"></i> {{ $siteSettings?->mobile }}
                 </p>
                 <p>
                     <i class="fas fa-clock icon"></i> Working Days:
-                    <br>{{ $siteSettings->working_days }} <br>{{ $siteSettings->working_hours }}
+                    <br>{{ $siteSettings?->working_days }} <br>{{ $siteSettings?->working_hours }}
                 </p>
             </div>
             <!-- Column 2: About Us -->
@@ -81,8 +81,8 @@
             </div>
             <!-- Right Side: Copyright Text -->
             <div class="col-12 col-md-6 text-center text-md-end">
-                <p class="footer-text">© {{ date('Y') }} {{ $siteSettings->company_name }} Powered by
-                    {{ $siteSettings->powered_by }}</p>
+                <p class="footer-text">© {{ date('Y') }} {{ $siteSettings?->company_name }} Powered by
+                    {{ $siteSettings?->powered_by }}</p>
             </div>
         </div>
     </div>

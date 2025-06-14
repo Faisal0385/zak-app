@@ -130,7 +130,7 @@
         <div>
             <h1>{{ $project->project_name }}</h1>
             <p>
-                <a href="{{ route('home') }}" class="text-white">{{ $siteSettings->company_name }}</a>
+                <a href="{{ route('home') }}" class="text-white">{{ $siteSettings?->company_name }}</a>
             </p>
         </div>
     </div>

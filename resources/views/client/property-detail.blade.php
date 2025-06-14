@@ -56,7 +56,7 @@
         <div>
             <h1>{{ $properties->property_name }}</h1>
             <p>
-                <a href="{{ route('home') }}" class="text-white">{{ $siteSettings->company_name }}</a> >
+                <a href="{{ route('home') }}" class="text-white">{{ $siteSettings?->company_name }}</a> >
                 <a href="{{ route('single.property.list', $properties->project?->slug) }}"
                     class="text-white">{{ $properties->project?->project_name }}</a>
             </p>

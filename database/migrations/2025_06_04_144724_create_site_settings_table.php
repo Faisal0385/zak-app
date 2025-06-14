@@ -15,15 +15,19 @@ return new class extends Migration {
             $table->string('page_title')->nullable();
             $table->string('company_name')->nullable();
             $table->text('company_subtitle')->nullable();
-            $table->string('office_address')->nullable();
+            $table->text('office_address')->nullable();
+            $table->text('head_office')->nullable();
+            $table->text('other_office_address')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('hot_number')->nullable();
             $table->string('working_days')->nullable();
             $table->string('working_hours')->nullable();
             $table->string('powered_by')->nullable();
             $table->text('google_map_iframe')->nullable();
             $table->string('footer_logo')->nullable();     // Store filename/path
+            $table->string('header_logo')->nullable();     // Store filename/path
             $table->string('banner_image')->nullable();    // Store filename/path
             $table->timestamps();
         });

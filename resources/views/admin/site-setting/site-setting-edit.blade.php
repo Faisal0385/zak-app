@@ -18,8 +18,8 @@
                                         <label for="page_title" class="col-form-label">Page Title</label>
                                         <div class="form-group">
                                             <input type="text" name="page_title" id="page_title"
-                                                class="form-control form-control-sm" value="{{ $siteSetting->page_title }}"
-                                                placeholder="Page Title" />
+                                                class="form-control form-control-sm"
+                                                value="{{ $siteSettings?->page_title }}" placeholder="Page Title" />
                                         </div>
                                     </div>
                                 </div>
@@ -30,7 +30,7 @@
                                         <div class="form-group">
                                             <input type="text" name="company_name" id="company_name"
                                                 class="form-control form-control-sm"
-                                                value="{{ $siteSetting->company_name }}" placeholder="Company Name" />
+                                                value="{{ $siteSettings?->company_name }}" placeholder="Company Name" />
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                     Subtitle</label>
                                 <div class="form-group">
                                     <textarea type="text" name="company_subtitle" id="company_subtitle" class="form-control form-control-sm"
-                                        placeholder="Company Subtitle">{{ $siteSetting->company_subtitle }}</textarea>
+                                        placeholder="Company Subtitle">{{ $siteSettings?->company_subtitle }}</textarea>
                                 </div>
                             </div>
 
@@ -49,7 +49,23 @@
                                 <label for="office_address" class="col-form-label">Office Address</label>
                                 <div class="form-group">
                                     <textarea type="text" name="office_address" id="office_address" class="form-control form-control-sm"
-                                        placeholder="Office Address">{{ $siteSetting->office_address }}</textarea>
+                                        placeholder="Office Address">{{ $siteSettings?->office_address }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="head_office" class="col-form-label">Head Office Address</label>
+                                <div class="form-group">
+                                    <textarea type="text" name="head_office" id="head_office" class="form-control form-control-sm"
+                                        placeholder="Office Address">{{ $siteSettings?->head_office }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="other_office_address" class="col-form-label">Other Office Address</label>
+                                <div class="form-group">
+                                    <textarea type="text" name="other_office_address" id="other_office_address" class="form-control form-control-sm"
+                                        placeholder="Office Address">{{ $siteSettings?->other_office_address }}</textarea>
                                 </div>
                             </div>
 
@@ -59,8 +75,18 @@
                                         <label for="email" class="col-form-label">Email</label>
                                         <div class="form-group">
                                             <input type="text" name="email" id="email"
-                                                class="form-control form-control-sm" value="{{ $siteSetting->email }}"
+                                                class="form-control form-control-sm" value="{{ $siteSettings?->email }}"
                                                 placeholder="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="phone_number" class="col-form-label">Phone</label>
+                                        <div class="form-group">
+                                            <input type="text" name="phone_number" id="phone_number"
+                                                class="form-control form-control-sm"
+                                                value="{{ $siteSettings?->phone_number }}" placeholder="Phone" />
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +95,7 @@
                                         <label for="mobile" class="col-form-label">Mobile</label>
                                         <div class="form-group">
                                             <input type="text" name="mobile" id="mobile"
-                                                class="form-control form-control-sm" value="{{ $siteSetting->mobile }}"
+                                                class="form-control form-control-sm" value="{{ $siteSettings?->mobile }}"
                                                 placeholder="Mobile" />
                                         </div>
                                     </div>
@@ -79,8 +105,8 @@
                                         <label for="hot_number" class="col-form-label">Hot Number</label>
                                         <div class="form-group">
                                             <input type="text" name="hot_number" id="hot_number"
-                                                class="form-control form-control-sm" value="{{ $siteSetting->hot_number }}"
-                                                placeholder="Hot Number" />
+                                                class="form-control form-control-sm"
+                                                value="{{ $siteSettings?->hot_number }}" placeholder="Hot Number" />
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +120,7 @@
                                         <div class="form-group">
                                             <input type="text" name="working_days" id="working_days"
                                                 class="form-control form-control-sm"
-                                                value="{{ $siteSetting->working_days }}" placeholder="Working Days" />
+                                                value="{{ $siteSettings?->working_days }}" placeholder="Working Days" />
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +131,8 @@
                                         <div class="form-group">
                                             <input type="text" name="working_hours" id="working_hours"
                                                 class="form-control form-control-sm"
-                                                value="{{ $siteSetting->working_hours }}" placeholder="Working Hours" />
+                                                value="{{ $siteSettings?->working_hours }}"
+                                                placeholder="Working Hours" />
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +142,7 @@
                                         <div class="form-group">
                                             <input type="text" name="powered_by" id="powered_by"
                                                 class="form-control form-control-sm"
-                                                value="{{ $siteSetting->powered_by }}" placeholder="Powered By" />
+                                                value="{{ $siteSettings?->powered_by }}" placeholder="Powered By" />
                                         </div>
                                     </div>
                                 </div>
@@ -125,11 +152,25 @@
                                 <label for="google_map_iframe" class="col-form-label">Google Map</label>
                                 <div class="form-group">
                                     <textarea type="text" name="google_map_iframe" rows="5" id="google_map_iframe"
-                                        class="form-control form-control-sm" placeholder="Google Map">{{ $siteSetting->google_map_iframe }}</textarea>
+                                        class="form-control form-control-sm" placeholder="Google Map">{{ $siteSettings?->google_map_iframe }}</textarea>
                                 </div>
                             </div>
 
                             <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="header_logo" class="mb-2">Header Logo</label>
+                                        <input type="file" class="mb-2 form-control form-control-sm" id="header_logo"
+                                            name="header_logo"
+                                            accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
+                                            onchange="showPreview3(event)" />
+                                        <div class="preview">
+                                            <img src="{{ $siteSettings?->header_logo ? asset($siteSettings?->header_logo) : asset('no_image.jpg') }}"
+                                                class="img img-thumbnail" id="file-ip-3-preview" width="150px"
+                                                height="80px" />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="footer_logo" class="mb-2">Footer Logo</label>
@@ -138,7 +179,7 @@
                                             accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
                                             onchange="showPreview(event)" />
                                         <div class="preview">
-                                            <img src="{{ $siteSetting->footer_logo ? asset($siteSetting->footer_logo) : asset('no_image.jpg') }}"
+                                            <img src="{{ $siteSettings?->footer_logo ? asset($siteSettings?->footer_logo) : asset('no_image.jpg') }}"
                                                 class="img img-thumbnail" id="file-ip-1-preview" width="150px"
                                                 height="80px" />
                                         </div>
@@ -152,7 +193,7 @@
                                             accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
                                             onchange="showPreview2(event)" />
                                         <div class="preview">
-                                            <img src="{{ $siteSetting->banner_image ? asset($siteSetting->banner_image) : asset('no_image.jpg') }}"
+                                            <img src="{{ $siteSettings?->banner_image ? asset($siteSettings?->banner_image) : asset('no_image.jpg') }}"
                                                 class="img img-thumbnail" id="file-ip-2-preview" width="150px"
                                                 height="80px" />
                                         </div>
@@ -180,6 +221,12 @@
 
         function showPreview2(event) {
             const preview = document.getElementById('file-ip-2-preview');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            preview.onload = () => URL.revokeObjectURL(preview.src); // Free memory
+        }
+
+        function showPreview3(event) {
+            const preview = document.getElementById('file-ip-3-preview');
             preview.src = URL.createObjectURL(event.target.files[0]);
             preview.onload = () => URL.revokeObjectURL(preview.src); // Free memory
         }

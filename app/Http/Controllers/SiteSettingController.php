@@ -17,6 +17,7 @@ class SiteSettingController extends Controller
     {
         $request->validate([
             'email' => 'nullable|string',
+            'header_logo' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
             'footer_logo' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
             'banner_image' => 'nullable|image|mimes:jpg,jpeg,png,svg,webp|max:2048',
         ]);
@@ -31,8 +32,11 @@ class SiteSettingController extends Controller
         $setting->company_name = $request->company_name;
         $setting->company_subtitle = $request->company_subtitle;
         $setting->office_address = $request->office_address;
+        $setting->head_office = $request->head_office;
+        $setting->other_office_address = $request->other_office_address;
         $setting->email = $request->email;
         $setting->mobile = $request->mobile;
+        $setting->phone_number = $request->phone_number;
         $setting->hot_number = $request->hot_number;
         $setting->working_days = $request->working_days;
         $setting->working_hours = $request->working_hours;
@@ -40,6 +44,16 @@ class SiteSettingController extends Controller
         $setting->google_map_iframe = $request->google_map_iframe;
 
         // Handle logo upload
+        if ($request->hasFile('header_logo')) {
+            // Optionally delete old image:
+            if ($setting->header_logo && file_exists(public_path($setting->header_logo))) {
+                unlink(public_path($setting->header_logo));
+            }
+
+            $path = $request->file('header_logo')->store('setting', 'public');
+            $setting->header_logo = 'storage/' . $path;
+        }
+
         if ($request->hasFile('footer_logo')) {
             // Optionally delete old image:
             if ($setting->footer_logo && file_exists(public_path($setting->footer_logo))) {

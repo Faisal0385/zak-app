@@ -3,8 +3,8 @@
 @section('content')
     <div class="container-fluid mx-0 px-0">
         <!-- contact Us Section -->
-        <section class="about-section" style="background-image: url('{{ asset($siteSettings->banner_image) }}');">
-            <h1>{{ $siteSettings->page_title }}</h1>
+        <section class="about-section" style="background-image: url('{{ asset($siteSettings?->banner_image) }}');">
+            <h1>{{ $siteSettings?->page_title }}</h1>
         </section>
     </div>
 
@@ -13,15 +13,15 @@
             <div class="col-md-6">
                 <div class="card mb-2">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $siteSettings->company_name }}</h5>
+                        <h5 class="card-title">{{ $siteSettings?->company_name }}</h5>
                         <p>
-                            <strong>Corporate Office:</strong> {{ $siteSettings->office_address }}<br />
-                            <strong>Email:</strong> {{ $siteSettings->email }}<br />
-                            <strong>Mobile:</strong> {{ $siteSettings->mobile }}
+                            <strong>Corporate Office:</strong> {{ $siteSettings?->office_address }}<br />
+                            <strong>Email:</strong> {{ $siteSettings?->email }}<br />
+                            <strong>Mobile:</strong> {{ $siteSettings?->mobile }}
                         </p>
                         <div class="map-section">
                             <!-- Placeholder for map -->
-                            <iframe src="{{ $siteSettings->google_map_iframe }}" width="100%" height="450"
+                            <iframe src="{{ $siteSettings?->google_map_iframe }}" width="100%" height="450"
                                 style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
