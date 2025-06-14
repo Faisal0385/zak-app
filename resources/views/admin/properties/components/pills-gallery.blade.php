@@ -6,9 +6,10 @@
             <div class="mb-3">
                 <label for="gallery_image" class="mb-2">Gallery Images</label>
                 <input type="file" class="mb-2 form-control form-control-sm" id="gallery_image" name="gallery_image"
-                    accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp" />
+                    accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
+                    onchange="showGalleryImagePreview(event)" />
                 <div class="preview">
-                    <img src="{{ asset('no_image.jpg') }}" class="img img-thumbnail" id="file-ip-1-preview"
+                    <img src="{{ asset('no_image.jpg') }}" class="img img-thumbnail" id="file-ip-2-preview"
                         width="150px" height="80px" />
                 </div>
             </div>

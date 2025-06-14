@@ -148,7 +148,11 @@ Route::post('/project/status/{id}', [ProjectController::class, 'changeStatus'])-
 Route::get('/properties/index', [PropertiesController::class, 'index'])->name('properties.index');
 Route::get('/properties/{id}/edit', [PropertiesController::class, 'edit'])->name('properties.edit');
 Route::get('/properties/{id}/add', [PropertiesController::class, 'add'])->name('properties.add');
-Route::post('/properties/create', [PropertiesController::class, 'create'])->name('properties.create');
+Route::post('/properties/store', [PropertiesController::class, 'store'])->name('properties.store');
+Route::post('/properties/{id}/update', [PropertiesController::class, 'update'])->name('properties.update');
+
+
+
 Route::post('/properties/{id}/location', [PropertiesController::class, 'updateLocation'])->name('properties.location');
 Route::post('/properties/{id}/video', [PropertiesController::class, 'updateVideoURL'])->name('properties.video');
 // Route::get('/properties/{id}/status', [PropertiesController::class, 'updateStatus'])->name('properties.status');

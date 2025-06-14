@@ -35,7 +35,7 @@
                             <b>Create New Property</b>
                         </h4>
                         <hr class="m-1" />
-                        <form method="POST" action="{{ route('properties.create') }}">
+                        <form method="POST" action="{{ route('properties.store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col">
@@ -111,19 +111,19 @@
                                             </a>
 
 
-                                            <a href="{{ route('project.edit', $property) }}" class="btn btn-sm btn-info"
-                                                title="Edit Data">
+                                            <a href="{{ route('properties.edit', $property->id) }}"
+                                                class="btn btn-sm btn-info" title="Edit Data">
                                                 <i class="fas fa-edit m-0" style="font-size: 12px"></i>
                                             </a>
 
                                             <!-- Delete Button Trigger -->
-                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            {{-- <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal{{ $property->id }}">
                                                 <i class="fa fa-trash m-0" style="font-size: 12px"></i>
-                                            </button>
+                                            </button> --}}
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal{{ $property->id }}" tabindex="-1"
+                                            {{-- <div class="modal fade" id="exampleModal{{ $property->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModal{{ $property->id }}Label" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -154,7 +154,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                         </td>
                                     </tr>

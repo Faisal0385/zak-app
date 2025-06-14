@@ -14,6 +14,7 @@ class SinglePropertyListController extends Controller
         $project = Project::where('slug', '=', $slug)->firstOrFail(['id', 'project_name']);
         $project_id = $project->id;
         $properties = Properties::where('project_id', $project_id)
+            ->where('status', '=', 'active')
             ->with('propertyType')
             ->get();
 

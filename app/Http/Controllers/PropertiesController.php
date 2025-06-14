@@ -50,12 +50,19 @@ class PropertiesController extends Controller
     }
 
 
+    public function edit($id)
+    {
+        $property = Properties::findOrFail($id);
+        $projects = Project::where('status', '=', 'active')->get();
+
+        return view('admin.properties.edit', compact('projects', 'property'));
+    }
 
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         ## Validation
         $validated = $request->validate([
@@ -72,6 +79,51 @@ class PropertiesController extends Controller
         ## Redirect back with success message
         return redirect()->back()->with('success', 'Property added successfully.');
     }
+
+    public function update(Request $request, $id)
+    {
+        // Validate incoming data
+        $request->validate([
+            'project_id' => 'required|exists:projects,id',
+            'property_name' => 'required|string|max:255',
+        ]);
+
+        // Find the property
+        $property = Properties::findOrFail($id);
+
+        // Update the property
+        $property->project_id = $request->project_id;
+        $property->property_name = $request->property_name;
+
+        // Save changes
+        $property->save();
+
+        // Redirect or return response
+        return redirect()->back()->with('success', 'Property updated successfully!');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function updateLocation(Request $request, $id)
     {
@@ -298,7 +350,6 @@ class PropertiesController extends Controller
 
         return back()->with('success', 'Gallery image deleted successfully.');
     }
-
 
     public function deletePdfFile($id)
     {

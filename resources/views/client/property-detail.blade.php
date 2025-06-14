@@ -67,7 +67,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-12">
-                <h2>{{ $properties->property_name }} 4 Bedrooms Townhouse</h2>
+                <h2>{{ $properties->property_name }}</h2>
                 <p><i class="bi bi-geo-alt"></i>{{ $properties->address }}</p>
             </div>
         </div>

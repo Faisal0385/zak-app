@@ -3,10 +3,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 mb-3">
-                <a class="btn btn-sm btn-primary" href="{{ route('project.index') }}">Back</a>
+                <a class="btn btn-sm btn-primary" href="{{ route('properties.index') }}">Back</a>
             </div>
         </div>
 
+        <!-- start page title -->
         <div class="row">
             <div class="col-8">
                 @if ($errors->any())
@@ -30,70 +31,50 @@
                 @endif
             </div>
         </div>
-
+        <br />
         <div class="row">
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title" style="color: black;"><b>Edit Project Page </b></h4>
-                        <hr class="m-1">
-                        <form method="POST" action="{{ route('project.update', $project->id) }}"
-                            enctype="multipart/form-data">
+                        <h4 class="card-title" style="color: black">
+                            <b>Update New Property</b>
+                        </h4>
+                        <hr class="m-1" />
+                        <form method="POST" action="{{ route('properties.update', $property->id) }}">
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3">
-                                        <label for="project_name" class="col-form-label">Project Name <sup
-                                                class="text-danger">*</sup></label>
-                                        <div class="form-group">
-                                            <input type="text" name="project_name" id="project_name"
-                                                class="form-control form-control-sm" value="{{ $project->project_name }}"
-                                                placeholder="Project Name" />
-                                        </div>
+                                    <label class="col-form-label">Project Name <sup class="text-danger">*</sup></label>
+                                    <div class="form-group">
+                                        <select name="project_id" class="form-select form-select-sm js-select-all"
+                                            aria-label="Default select example">
+                                            <option value="">Pls Select Project Name</option>
+                                            @foreach ($projects as $project)
+                                                <option value="{{ $project->id }}"
+                                                    {{ $project->id == $property->project_id ? 'selected' : '' }}>
+                                                    {{ $project->project_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3">
-                                        <label for="developer_name" class="col-form-label">Developer Name <sup
-                                                class="text-danger">*</sup></label>
-                                        <div class="form-group">
-                                            <input type="text" name="developer_name" id="developer_name"
-                                                class="form-control form-control-sm" value="{{ $project->developer_name }}"
-                                                placeholder="Developer Name" />
-                                        </div>
+                                    <label for="property_name" class="col-form-label">Property Name <sup
+                                            class="text-danger">*</sup></label>
+                                    <div class="form-group">
+                                        <input type="text" name="property_name" id="property_name"
+                                            value="{{ $property->property_name }}" class="form-control form-control-sm"
+                                            placeholder="Property Name" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured"
-                                            {{ $project->is_featured == 1 ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="is_featured">
-                                            Featured
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="mb-3">
-                                <label for="image" class="mb-2">Project Image <sup class="text-danger">*</sup></label>
-                                <input type="file" class="mb-2 form-control form-control-sm" id="image"
-                                    name="image" accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
-                                    onchange="showPreview(event)" />
-                                <div class="preview">
-                                    <img src="{{ $project->image ? asset($project->image) : asset('no_image.jpg') }}"
-                                        class="img img-thumbnail" id="file-ip-1-preview" width="150px" height="80px" />
-                                </div>
-                            </div>
-
+                            <br>
                             <input type="submit" class="btn btn-sm btn-warning waves-effect waves-light" value="Update" />
-
                         </form>
                     </div>
                 </div>
-            </div> <!-- end col -->
+            </div>
+            <!-- end col -->
         </div>
     </div>
     <!--end page wrapper -->

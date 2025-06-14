@@ -116,38 +116,34 @@
     </div>
 
     <script>
-        async function updateForRent(propertyId) {
-            console.log('====================================');
-            console.log("Updating status...");
-            console.log('====================================');
+        //     async function updateForRent(propertyId) {
+        //         const forRent = document.getElementById('for_rent').checked ? 1 : 0;
+        //         try {
+        //             const response = await fetch(`/properties/${propertyId}/status`, {
+        //                 method: 'POST',
+        //                 headers: {
+        //                     'Content-Type': 'application/json',
+        //                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+        //                         'content')
+        //                 },
+        //                 body: JSON.stringify({
+        //                     for_rent: forRent
+        //                 })
+        //             });
 
-            const forRent = document.getElementById('for_rent').checked ? 1 : 0;
+        //             if (!response.ok) {
+        //                 throw new Error('Network response was not ok');
+        //             }
 
-            try {
-                const response = await fetch(`/properties/${propertyId}/status`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                            'content')
-                    },
-                    body: JSON.stringify({
-                        for_rent: forRent
-                    })
-                });
+        //             const data = await response.json();
+        //             alert(data.message || 'Status updated successfully!');
+        //         } catch (error) {
+        //             console.error('Error:', error);
+        //             alert('Failed to update status.');
+        //         }
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const data = await response.json();
-                alert(data.message || 'Status updated successfully!');
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Failed to update status.');
-            }
-
-        }
+        //     }
+        // 
     </script>
 
     <script type="text/javascript">
@@ -155,6 +151,28 @@
             if (event.target.files.length > 0) {
                 var src = URL.createObjectURL(event.target.files[0]);
                 var preview = document.getElementById("file-ip-1-preview");
+                preview.src = src;
+                preview.style.display = "block";
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function showGalleryImagePreview(event) {
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("file-ip-2-preview");
+                preview.src = src;
+                preview.style.display = "block";
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function showLayoutPreview(event) {
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("file-ip-3-preview");
                 preview.src = src;
                 preview.style.display = "block";
             }

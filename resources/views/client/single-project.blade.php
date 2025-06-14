@@ -156,7 +156,8 @@
                 <div class="col-lg-4">
                     <div class="card shadow-sm m-1">
                         <div class="position-relative">
-                            <img src="{{ asset($property->featured_image) }}" class="card-img-top" alt="Property Image" />
+                            <img src="{{ !empty($property->featured_image) ? asset($property->featured_image) : asset('no_image.jpg') }}"
+                                class="card-img-top" alt="Property Image" />
                             @if ($property->is_featured == 1)
                                 <span
                                     class="badge badge-featured position-absolute top-0 end-0 m-2 text-white">Featured</span>

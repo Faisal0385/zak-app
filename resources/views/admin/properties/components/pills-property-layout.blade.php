@@ -73,10 +73,10 @@
                             <input type="file" class="mb-2 form-control form-control-sm" id="floor_layout_image"
                                 name="floor_layout_image"
                                 accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
-                                onchange="showPreview(event)" />
+                                onchange="showLayoutPreview(event)" />
                             <div class="preview">
                                 <img src="{{ $properties->floor_layout_image ? asset($properties->floor_layout_image) : asset('no_image.jpg') }}"
-                                    class="img img-thumbnail" id="file-ip-1-preview" width="150px" height="80px" />
+                                    class="img img-thumbnail" id="file-ip-3-preview" width="150px" height="80px" />
                             </div>
                         </div>
                     </div>
@@ -87,81 +87,6 @@
             </form>
         </div>
     </div>
-    @if ($editLayout ?? false)
-        <div class="row m-3">
-            <h5>Edit Floor Layout</h5>
-            <div class="shadow-sm p-2">
-                <form method="POST" action="{{ route('properties.update.layout', $editLayout->id) }}"
-                    enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="floor_name" class="col-form-label">Floor Name</label>
-                            <input type="text" name="floor_name" class="form-control form-control-sm"
-                                value="{{ $editLayout->floor_name }}" placeholder="Floor Name" />
-                        </div>
-                        <div class="col-4">
-                            <label for="floor_price" class="col-form-label">Floor Price</label>
-                            <input type="text" name="floor_price" class="form-control form-control-sm"
-                                value="{{ $editLayout->floor_price }}" placeholder="Floor Price" />
-                        </div>
-                        <div class="col-4">
-                            <label for="price_postfix" class="col-form-label">Price Postfix</label>
-                            <input type="text" name="price_postfix" class="form-control form-control-sm"
-                                value="{{ $editLayout->price_postfix }}" placeholder="e.g. Per Month" />
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="floor_size" class="col-form-label">Floor Size (sq. ft.)</label>
-                            <input type="text" name="floor_size" class="form-control form-control-sm"
-                                value="{{ $editLayout->floor_size }}" placeholder="Floor Size" />
-                        </div>
-                        <div class="col-4">
-                            <label for="bedroom" class="col-form-label">Bedroom</label>
-                            <input type="text" name="bedroom" class="form-control form-control-sm"
-                                value="{{ $editLayout->bedroom }}" placeholder="Bedroom" />
-                        </div>
-                        <div class="col-4">
-                            <label for="bathroom" class="col-form-label">Bathroom</label>
-                            <input type="text" name="bathroom" class="form-control form-control-sm"
-                                value="{{ $editLayout->bathroom }}" placeholder="Bathroom" />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <label for="description" class="col-form-label">Description</label>
-                            <textarea name="description" class="form-control form-control-sm" placeholder="Description">{{ $editLayout->description }}</textarea>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col mt-3">
-                            <label for="floor_layout_image" class="mb-2">Floor Plan Image</label>
-                            <input type="file" class="form-control form-control-sm mb-2" name="floor_layout_image"
-                                accept="image/*" onchange="showPreview(event)" />
-
-                            <div class="preview">
-                                <img src="{{ $editLayout->floor_layout_image ? asset($editLayout->floor_layout_image) : asset('no_image.jpg') }}"
-                                    class="img img-thumbnail" id="file-ip-1-preview" width="150px"
-                                    height="80px" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <button type="submit" class="btn btn-sm btn-success">Update</button>
-                </form>
-            </div>
-        </div>
-    @endif
-
 
     <div class="row">
         <div class="col">
