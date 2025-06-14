@@ -30,7 +30,100 @@
             position: relative;
             z-index: 1;
         }
+
+
+        /* Hide content initially */
+        #main-content {
+            display: none;
+        }
+
+        /* Modal backdrop styling */
+        .modal-backdrop {
+            z-index: 1040 !important;
+        }
+
+        .modal {
+            z-index: 1050 !important;
+        }
     </style>
+
+    @if (!session('lead_submitted') || session('lead_expires_at') < now()->timestamp)
+        <!-- Modal with Form -->
+        <div class="modal fade" id="accessFormModal" tabindex="-1" aria-labelledby="accessFormModalLabel" aria-hidden="true"
+            data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-top">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="accessFormModalLabel">
+                            Please Fill Out the Form
+                        </h5>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <strong>Validation Error:</strong>
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form id="accessForm" action="{{ route('lead.form.store') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" name="name" required
+                                    placeholder="Enter your name" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Enter your email" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" name="phone" required
+                                    placeholder="Enter your phone number" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="property_type_id" class="form-label">Property Type</label>
+                                <select name="property_type_id" class="form-control" required>
+                                    <option value="">-- Select --</option>
+                                    @foreach ($propertyTypes as $propertyType)
+                                        <option value="{{ $propertyType->id }}">{{ $propertyType->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="budget" class="form-label">Budget</label>
+                                <select name="budget" class="form-control" required>
+                                    <option value="">-- Select Budget --</option>
+                                    <option value="Under 500K AED">Under 500K AED</option>
+                                    <option value="500K - 1M AED">500K - 1M AED</option>
+                                    <option value="1M - 2M AED">1M - 2M AED</option>
+                                    <option value="Above 2M AED">Above 2M AED</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <!-- Header -->
     <div class="header-bg">
@@ -41,7 +134,6 @@
             </p>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -109,4 +201,53 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        // Show modal on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = new bootstrap.Modal(
+                document.getElementById("accessFormModal"), {
+                    backdrop: "static",
+                    keyboard: false,
+                }
+            );
+            modal.show();
+
+            // Handle form submission
+            // const form = document.getElementById("accessForm");
+            // form.addEventListener("submit", function(event) {
+            //     event.preventDefault();
+
+            //     // Basic client-side validation
+            //     const name = document.getElementById("name").value;
+            //     const email = document.getElementById("email").value;
+            //     const phone = document.getElementById("phone").value;
+
+            //     if (name && email && phone) {
+            //         // Optionally, send form data to a server here using fetch or XMLHttpRequest
+            //         // Example:
+            //         /*
+            //         fetch('/submit-form', {
+            //           method: 'POST',
+            //           headers: { 'Content-Type': 'application/json' },
+            //           body: JSON.stringify({ name, email, phone })
+            //         })
+            //         .then(response => response.json())
+            //         .then(data => {
+            //           console.log('Form submitted:', data);
+            //         })
+            //         .catch(error => {
+            //           console.error('Error:', error);
+            //         });
+            //         */
+
+            //         // Close modal and show content
+            //         modal.hide();
+            //         document.getElementById("main-content").style.display = "block";
+            //     } else {
+            //         alert("Please fill out all fields.");
+            //     }
+            // });
+        });
+    </script>
 @endsection

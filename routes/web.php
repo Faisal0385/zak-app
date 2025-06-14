@@ -7,6 +7,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PropertiesController;
@@ -215,3 +216,7 @@ Route::get('/properties/list', [PropertiesListController::class, 'index'])->name
 
 ## Property Detail
 Route::get('/property/{id}/detail', [PropertyDetailController::class, 'index'])->name('property.detail');
+
+
+## lead.form.store
+Route::post('/lead/form', [LeadController::class, 'store'])->name('lead.form.store');
