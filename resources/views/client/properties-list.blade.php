@@ -27,7 +27,7 @@
                 <div class="col-lg-4">
                     <div class="card shadow-sm m-1">
                         <div class="position-relative">
-                            <img src="{{ asset('assets/images/kingsbridge/KB_Images-for-web-app-4-BED-TH-FRONT.webp') }}"
+                            <img src="{{ !empty($property->featured_image) ? asset($property->featured_image) : asset('no_image.jpg') }}"
                                 class="card-img-top" alt="Property Image" />
                             @if ($property->is_featured == 1)
                                 <span
