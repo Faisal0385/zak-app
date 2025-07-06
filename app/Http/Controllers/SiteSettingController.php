@@ -28,7 +28,6 @@ class SiteSettingController extends Controller
             $setting = new SiteSetting();
         }
 
-        $setting->page_title = $request->page_title;
         $setting->company_name = $request->company_name;
         $setting->company_subtitle = $request->company_subtitle;
         $setting->office_address = $request->office_address;

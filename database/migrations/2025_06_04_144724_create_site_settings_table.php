@@ -12,7 +12,6 @@ return new class extends Migration {
     {
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('page_title')->nullable();
             $table->string('company_name')->nullable();
             $table->text('company_subtitle')->nullable();
             $table->text('office_address')->nullable();

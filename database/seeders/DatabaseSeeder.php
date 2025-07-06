@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
                 // SocialMediaLinkSeeder::class,
-                // SiteSettingsSeeder::class,
+            SiteSettingsSeeder::class,
                 // CategorySeeder::class,
             AboutPageSeeder::class,
             // CountriesTableSeeder::class,

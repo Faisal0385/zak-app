@@ -15,16 +15,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label for="page_title" class="col-form-label">Page Title</label>
-                                        <div class="form-group">
-                                            <input type="text" name="page_title" id="page_title"
-                                                class="form-control form-control-sm"
-                                                value="{{ $siteSettings?->page_title }}" placeholder="Page Title" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
                                         <label for="company_name" class="col-form-label">Company
                                             Name</label>
                                         <div class="form-group">
