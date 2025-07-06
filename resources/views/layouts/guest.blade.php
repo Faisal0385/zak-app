@@ -20,7 +20,8 @@
     style="background-image:url({{ asset('admin/assets/images/login-images/bg-login-img.jpg') }})">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div>
-            <img src="{{ asset($siteSettings?->footer_logo) }}" alt="company logo" width="100px" height="100px">
+            <img src="{{ !empty($siteSettings?->footer_logo) ? asset($siteSettings?->footer_logo) : asset('no_image.jpg') }}"
+                alt="company logo" width="100px" height="100px">
         </div>
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">

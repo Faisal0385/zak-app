@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #011835">
     <div class="container-fluid">
         <a class="navbar-brand mx-2" href="/">
-            <img src="{{ asset('assets/images/main-logo.png') }}" alt="" height="60px" />
+            <img src="{{ !empty($siteSettings?->header_logo) ? asset($siteSettings?->header_logo) : asset('no_image.jpg') }}"
+                alt="" height="60px" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"

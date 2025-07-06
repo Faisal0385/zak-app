@@ -9,8 +9,7 @@
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
-                    <li class="breadcrumb-item">
-                        <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Change Password Page</li>
                 </ol>
@@ -26,18 +25,18 @@
             <div class="card border-top border-0 border-4 border-danger">
                 <div class="card-body p-5">
 
-                    <form id="myForm">
+                    <form method="post" action="{{ route('admin.password.update') }}">
+                        @csrf
 
                         <div class="row">
                             <div class="col-12">
-                                <label for="old_password" class="form-label">Old Password</label>
+                                <label for="oldPassword" class="form-label">Old Password</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-transparent">
                                         <i class='bx bxs-lock-open'></i>
                                     </span>
-                                    <input type="password" name="old_password"
-                                        class="form-control form-control-sm border-start-0" id="old_password"
-                                        placeholder="Old Password" />
+                                    <input type="password" name="old_password" class="form-control border-start-0"
+                                        id="oldPassword" placeholder="Old Password" />
                                 </div>
                                 <div class="pt-1">
                                     @error('old_password')
@@ -52,9 +51,8 @@
                                     <span class="input-group-text bg-transparent">
                                         <i class='bx bxs-lock-open'></i>
                                     </span>
-                                    <input type="password" name="new_password"
-                                        class="form-control form-control-sm border-start-0" id="new_password"
-                                        placeholder="New Password" />
+                                    <input type="password" name="new_password" class="form-control border-start-0"
+                                        id="new_password" placeholder="New Password" />
                                 </div>
                                 <div class="pt-1">
                                     @error('new_password')
@@ -70,14 +68,13 @@
                                         <i class='bx bxs-lock'></i>
                                     </span>
                                     <input type="password" name="new_password_confirmation"
-                                        class="form-control form-control-sm border-start-0" id="new_password_confirmation"
+                                        class="form-control border-start-0" id="new_password_confirmation"
                                         placeholder="Confirm Password" />
                                 </div>
                             </div>
 
                             <div class="col-12 pt-4">
-                                <button type="submit" class="btn btn-sm btn-danger px-5">Update
-                                    Password</button>
+                                <button type="submit" class="btn btn-sm btn-danger px-5">Update Password</button>
                             </div>
                         </div>
                     </form>

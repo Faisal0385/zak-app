@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutPageController;
+use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
@@ -59,11 +60,13 @@ Route::post('/contact/form/submit', [ContactController::class, 'store'])->name('
 
 ### Protected Route @ Admin Dashboard Routes
 Route::group(['prefix' => 'admin/dashboard'], function () {
-    Route::get('/profile/page', [AdminDashboardController::class, 'ProfilePage'])->name('admin.profile');
-    Route::get('/change/password/page', [AdminDashboardController::class, 'ChangePasswordPage'])->name('admin.change.password');
+    Route::get('/profile/page', [AdminController::class, 'adminProfilePage'])->name('admin.profile');
+    Route::get('/change/password/page', [AdminController::class, 'AdminChangePasswordPage'])->name('admin.change.password');
 
-    Route::post('/profile', [AdminDashboardController::class, 'Profile']);
-    Route::post('/change/password', [AdminDashboardController::class, 'ChangePassword']);
+    Route::post('/profile', [AdminController::class, 'Profile']);
+    Route::post('/change/password', [AdminController::class, 'ChangePassword']);
+    Route::post('profile/update', [AdminController::class, 'adminProfileUpdate'])->name('admin.profile.update');
+    Route::post('password/update', [AdminController::class, 'adminPasswordUpdate'])->name('admin.password.update');
 });
 #@@ Admin end
 

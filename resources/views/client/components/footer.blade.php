@@ -5,8 +5,9 @@
         <div class="row align-items-center mb-4">
             <div class="col-12 col-md-2 text-center text-md-start">
                 <span class="logo">
-                    <img class="img-fluid mb-2" src="{{ asset($siteSettings?->footer_logo) }}" alt="footer logo"
-                        style="width: 100px; height:100px;">
+                    <img class="img-fluid mb-2"
+                        src="{{ !empty($siteSettings?->footer_logo) ? asset($siteSettings?->footer_logo) : asset('no_image.jpg') }}"
+                        alt="footer logo" style="width: 100px; height:100px;">
                 </span>
             </div>
             <div class="col-12 col-md-10 tagline text-md-start">

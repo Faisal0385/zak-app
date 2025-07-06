@@ -5,13 +5,13 @@
 @section('content')
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Admin Profile</div>
+        <div class="breadcrumb-title pe-3">User Profile</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Profile Details</li>
+                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                 </ol>
             </nav>
         </div>
@@ -25,12 +25,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img src="{{ asset('no_image.jpg') }}" alt="Admin" class="img-thumbnail rounded-circle mb-2"
-                            width="110">
+                        <img src="{{ !empty($editData->image) ? url('upload/admin_images/' . $editData->image) : url('no_image.jpg') }}"
+                            alt="Admin" class="img-thumbnail rounded-circle" width="110">
                         <div class="mt-3">
-                            <h4>Faisal A Salam</h4>
-                            <p class="text-secondary mb-1">faisaltez@gmail.com</p>
-                            <p class="text-muted font-size-sm">Chitagong</p>
+                            <h4>{{ $editData->name }}</h4>
+                            <p class="text-secondary mb-1">{{ $editData->email }}</p>
+                            <p class="text-muted font-size-sm">{{ $editData->address }}</p>
                         </div>
                     </div>
 
@@ -39,15 +39,20 @@
         </div>
         <div class="col-lg-8">
             <div class="card">
-                <form id="myForm">
+                <form method="post" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data">
+                    @csrf
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control form-control-sm" name="name" id="name"
-                                    value="Faisal" placeholder="Full Name" />
+                                <input type="text" class="form-control" name="name" value="{{ $editData->name }}" />
+                                <div class="pt-1">
+                                    @error('name')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -55,38 +60,33 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input type="text" name="phone" id="phone" class="form-control form-control-sm"
-                                    value="01312361494" placeholder="Phone" />
+                                <input type="text" name="phone" class="form-control" value="{{ $editData->phone }}" />
                             </div>
                         </div>
 
-                        <div class="row
-                                mb-3">
+                        <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <textarea type="text" name="address" id="address" class="form-control form-control-sm" placeholder="Address">Chittagong</textarea>
+                                <textarea type="text" name="address" class="form-control">{{ $editData->address }}</textarea>
                             </div>
                         </div>
-                        <div class="row
-                                    mb-3">
+                        <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Photo</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <input id="image" name="photo" type="file" class="form-control form-control-sm"
-                                    accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
-                                    onchange="showPreview(event)" />
+                                <input type="file" name="photo" onchange="showPreview(event);" class="form-control">
                             </div>
-
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-sm-3"></div>
                             <div class="col-lg-9">
-                                <img id="file-ip-1-preview" src="{{ asset('no_image.jpg') }}" alt="Admin"
-                                    class="img-thumbnail rounded" width="110">
+                                <img id="file-ip-1-preview"
+                                    src="{{ !empty($editData->image) ? url('upload/admin_images/' . $editData->image) : url('no_image.jpg') }}"
+                                    alt="Admin" class="img-thumbnail rounded" width="110">
                             </div>
                         </div>
                         <div class="row">
@@ -100,9 +100,6 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
     <script>
         function showPreview(event) {
             if (event.target.files.length > 0) {
