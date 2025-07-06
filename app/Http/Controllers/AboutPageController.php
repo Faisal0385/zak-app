@@ -58,9 +58,7 @@ class AboutPageController extends Controller
             $about->banner_image = 'storage/' . $path;
         }
 
-
         $about->save();
-
         return redirect()->back()->with('success', 'About Page updated successfully!');
     }
 }

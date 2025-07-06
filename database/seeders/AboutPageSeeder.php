@@ -16,12 +16,12 @@ class AboutPageSeeder extends Seeder
         AboutPage::updateOrCreate(
             ['id' => 1],                 // force a single known row
             [
-                'page_title' => 'About GM IT',
-                'banner_image' => 'about/banner.jpg',
-                'our_story' => 'GM IT began in Dhaka as a small team of dreamers creating practical tech courses in Bangla',
-                'mission' => 'Empower learners with hands-on skills for today’s digital jobs.',
-                'vision' => 'To become the most trusted learning hub in South Asia.',
-                'video_link' => 'https://youtu.be/dQw4w9WgXcQ',
+                'page_title' => 'About Us',
+                'banner_image' => 'https://zakrealty.co/storage/about/5Wv30HI1f7vNBHOESAlPnTb6brzOaP5TwO4PIL5X.webp',
+                'our_story' => 'At ZAK Realty, our mission is to redefine real estate brokerage in Dubai by delivering exceptional service, transparency, and expert guidance in the off-plan and secondary markets. We are committed to helping clients make informed investment decisions through personalized solutions, in-depth market knowledge, and unwavering integrity. By fostering long-term relationships built on trust, we aim to be the preferred partner for buyers, sellers, and investors navigating Dubai’s dynamic property landscape.',
+                'mission' => 'At ZAK Realty, our mission is to redefine real estate brokerage in Dubai by delivering exceptional service, transparency, and expert guidance in the off-plan and secondary markets. We are committed to helping clients make informed investment decisions through personalized solutions, in-depth market knowledge, and unwavering integrity. By fostering long-term relationships built on trust, we aim to be the preferred partner for buyers, sellers, and investors navigating Dubai’s dynamic property landscape.',
+                'vision' => 'Our vision is to become the most trusted and innovative real estate brokerage in Dubai, known for excellence in off-plan and resale property transactions. By leveraging our founder’s decade-long expertise and deep local insights, we strive to set new standards in client service, market intelligence, and investment success. Through continuous growth and adaptability, ZAK Realty aims to shape the future of real estate in Dubai, turning aspirations into tangible, rewarding investments.',
+                'video_link' => 'oz7wmF51Gwk',
             ]
         );
     }

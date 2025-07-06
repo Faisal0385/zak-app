@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                        <img src="{{ !empty($editData->image) ? url('upload/admin_images/' . $editData->image) : url('no_image.jpg') }}"
+                        <img src="{{ !empty($editData->image) ? url($editData->image) : url('no_image.jpg') }}"
                             alt="Admin" class="img-thumbnail rounded-circle" width="110">
                         <div class="mt-3">
                             <h4>{{ $editData->name }}</h4>
@@ -85,7 +85,7 @@
                             <div class="col-sm-3"></div>
                             <div class="col-lg-9">
                                 <img id="file-ip-1-preview"
-                                    src="{{ !empty($editData->image) ? url('upload/admin_images/' . $editData->image) : url('no_image.jpg') }}"
+                                    src="{{ !empty($editData->image) ? url($editData->image) : url('no_image.jpg') }}"
                                     alt="Admin" class="img-thumbnail rounded" width="110">
                             </div>
                         </div>

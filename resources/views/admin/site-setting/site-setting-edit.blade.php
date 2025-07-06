@@ -140,8 +140,8 @@
                                     <div class="mb-3">
                                         <label for="powered_by" class="col-form-label">Powered By</label>
                                         <div class="form-group">
-                                            <input type="text" name="powered_by" id="powered_by"
-                                                class="form-control form-control-sm"
+                                            <input type="text" name="powered_by" id="powered_by" readonly
+                                                class="form-control form-control-sm" value="KAF TECH BD"
                                                 value="{{ $siteSettings?->powered_by }}" placeholder="Powered By" />
                                         </div>
                                     </div>
