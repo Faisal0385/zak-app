@@ -14,9 +14,7 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         $countries = [
-            ['name' => 'Bangladesh', 'slug' => 'bangladesh'],
-            ['name' => 'India', 'slug' => 'india'],
-            ['name' => 'Pakistan', 'slug' => 'pakistan'],
+            ['name' => 'United Arab Emirates', 'slug' => 'united-arab-emirates'],
             ['name' => 'United States', 'slug' => 'united-states'],
             ['name' => 'United Kingdom', 'slug' => 'united-kingdom'],
             ['name' => 'Canada', 'slug' => 'canada'],

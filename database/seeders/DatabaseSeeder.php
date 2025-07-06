@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-                // SocialMediaLinkSeeder::class,
-            SiteSettingsSeeder::class,
                 // CategorySeeder::class,
-            AboutPageSeeder::class,
+            SliderSeeder::class,
+            // SocialMediaLinkSeeder::class,
+            // SiteSettingsSeeder::class,
+            // AboutPageSeeder::class,
             // CountriesTableSeeder::class,
             // StatesTableSeeder::class,
             // CitiesTableSeeder::class,
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             // PropertyTypesTableSeeder::class,
             // PropertyLabelsTableSeeder::class,
             // PropertyStatusesTableSeeder::class,
+
             // ProjectsTableSeeder::class,
             // PropertiesTableSeeder::class
         ]);

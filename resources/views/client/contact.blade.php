@@ -4,7 +4,7 @@
     <div class="container-fluid mx-0 px-0">
         <!-- contact Us Section -->
         <section class="about-section" style="background-image: url('{{ asset($siteSettings?->banner_image) }}');">
-            <h1>{{ $siteSettings?->page_title }}</h1>
+            <h1>Contact Us</h1>
         </section>
     </div>
 

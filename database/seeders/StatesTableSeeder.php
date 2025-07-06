@@ -17,10 +17,6 @@ class StatesTableSeeder extends Seeder
         $countries = DB::table('countries')->pluck('id', 'slug');
 
         $states = [
-            ['name' => 'Dhaka', 'slug' => 'dhaka', 'country_slug' => 'bangladesh'],
-            ['name' => 'Chattogram', 'slug' => 'chattogram', 'country_slug' => 'bangladesh'],
-            ['name' => 'Maharashtra', 'slug' => 'maharashtra', 'country_slug' => 'india'],
-            ['name' => 'Punjab', 'slug' => 'punjab', 'country_slug' => 'pakistan'],
             ['name' => 'California', 'slug' => 'california', 'country_slug' => 'united-states'],
             ['name' => 'Ontario', 'slug' => 'ontario', 'country_slug' => 'canada'],
         ];

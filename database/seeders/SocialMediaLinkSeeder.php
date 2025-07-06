@@ -16,22 +16,22 @@ class SocialMediaLinkSeeder extends Seeder
         SocialMediaLink::insert([
             [
                 'platform' => 'Facebook',
-                'url' => 'https://facebook.com/yourpage',
+                'url' => 'https://www.facebook.com/zakrealty.uae',
                 'icon_class' => 'fab fa-facebook-f',
             ],
             [
                 'platform' => 'Instagram',
-                'url' => 'https://instagram.com/yourpage',
+                'url' => 'https://www.instagram.com/zakrealty.uae/',
                 'icon_class' => 'fab fa-instagram',
             ],
             [
                 'platform' => 'YouTube',
-                'url' => 'https://youtube.com/yourchannel',
+                'url' => '#',
                 'icon_class' => 'fab fa-youtube',
             ],
             [
                 'platform' => 'Twitter',
-                'url' => 'https://twitter.com/yourpage',
+                'url' => '#',
                 'icon_class' => 'fab fa-twitter',
             ],
         ]);
