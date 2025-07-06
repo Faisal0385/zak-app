@@ -57,6 +57,16 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.view'
 Route::post('/contact/form/submit', [ContactController::class, 'store'])->name('contact.form.submit');
 
 
+### Protected Route @ Admin Dashboard Routes
+Route::group(['prefix' => 'admin/dashboard'], function () {
+    Route::get('/profile/page', [AdminDashboardController::class, 'ProfilePage'])->name('admin.profile');
+    Route::get('/change/password/page', [AdminDashboardController::class, 'ChangePasswordPage'])->name('admin.change.password');
+
+    Route::post('/profile', [AdminDashboardController::class, 'Profile']);
+    Route::post('/change/password', [AdminDashboardController::class, 'ChangePassword']);
+});
+#@@ Admin end
+
 ###################### Admin Route
 ###################### Admin Route
 ###################### Admin Route
