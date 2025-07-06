@@ -24,7 +24,7 @@ class SliderSeeder extends Seeder
                 'image' => 'assets/images/sliders/slider2.png',
                 'title' => 'Contact Us Today',
                 'sub_title' => 'We are here to help you',
-                'status' => 'inactive',
+                'status' => 'active',
             ],
         ];
 

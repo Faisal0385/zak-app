@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $siteSettings = SiteSetting::first(); // Assumes one row
-            $socialLinks = SocialMediaLink::all(); // Fetch all social media links
+            $socialLinks = SocialMediaLink::where('status', '=', 'active')->get(); // Fetch all social media links
 
             $view->with([
                 'siteSettings' => $siteSettings,

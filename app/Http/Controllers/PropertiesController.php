@@ -24,7 +24,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('status', '=', 'active')->latest()->orderBy('project_name', 'desc')->get();
+        $projects = Project::where('status', '=', 'active')->latest()->orderBy('project_name', 'asc')->get();
         $properties = Properties::latest()->get();
 
         return view('admin.properties.index', compact('projects', 'properties'));

@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AboutPageController;
-use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
@@ -105,6 +104,7 @@ Route::get('/social/link/{id}/edit', [SocialMediaLinkController::class, 'edit'])
 Route::post('/social/link/store', [SocialMediaLinkController::class, 'store'])->name('social.link.store');
 Route::post('/social/link/{id}/update', [SocialMediaLinkController::class, 'update'])->name('social.link.update');
 Route::post('/social/link/{id}/destroy', [SocialMediaLinkController::class, 'destroy'])->name('social.link.destroy');
+Route::post('/social/status/{id}', [SocialMediaLinkController::class, 'changeStatus']);
 
 ## Property Status
 Route::get('/property/status/index', [PropertyStatusController::class, 'index'])->name('property.status.index');

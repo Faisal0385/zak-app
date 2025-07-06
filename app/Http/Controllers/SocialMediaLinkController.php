@@ -97,4 +97,18 @@ class SocialMediaLinkController extends Controller
         return redirect()->back()->with('success', 'Social media link deleted successfully.');
     }
 
+
+    public function changeStatus($id)
+    {
+        $socialMediaLink = SocialMediaLink::findOrFail($id);
+        $socialMediaLink->status = $socialMediaLink->status === 'active' ? 'inactive' : 'active';
+        $socialMediaLink->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Status updated successfully.',
+            'status' => $socialMediaLink->status
+        ]);
+    }
+
 }

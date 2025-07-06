@@ -34,6 +34,11 @@ class SocialMediaLinkSeeder extends Seeder
                 'url' => '#',
                 'icon_class' => 'fab fa-twitter',
             ],
+            [
+                'platform' => 'Linkedin',
+                'url' => '#',
+                'icon_class' => 'fa-brands fa-linkedin',
+            ],
         ]);
     }
 }

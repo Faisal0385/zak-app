@@ -27,6 +27,7 @@
                             <thead>
                                 <tr class="text-white" style="background-color: teal">
                                     <th>Sl</th>
+                                    <th>Date</th>
                                     <th>Full Name</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
@@ -40,6 +41,13 @@
                                 @foreach ($leads as $key => $lead)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+                                        <td>
+                                            @php
+                                                $date = $lead->created_at;
+                                                $formatted_date = date('d-m-Y', strtotime($date));
+                                            @endphp
+                                            {{ $formatted_date }}
+                                        </td>
                                         <td>
                                             {{ $lead->name }}
                                         </td>
@@ -70,6 +78,7 @@
                             <tfooter>
                                 <tr class="text-white" style="background-color: teal">
                                     <th>Sl</th>
+                                    <th>Date</th>
                                     <th>Full Name</th>
                                     <th>Mobile</th>
                                     <th>Email</th>

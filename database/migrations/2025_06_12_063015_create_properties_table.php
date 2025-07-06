@@ -53,9 +53,6 @@ return new class extends Migration {
 
             // Foreign Keys (optional cascading based on needs)
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('set null');
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
-            $table->foreign('state_id')->references('id')->on('states')->onDelete('set null');
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
         });
     }
 

@@ -58,6 +58,12 @@
                                         <td>{{ $link->url }}</td>
                                         <td class="text-center">
 
+                                            <a href="javascript:void(0)" id="status_btn_{{ $link->id }}"
+                                                class="btn btn-sm btn-{{ $link->status == 'inactive' ? 'danger' : 'success' }}"
+                                                onclick="StatusChange({{ $link->id }})">
+                                                <i class="fa fa-check-circle m-0" style="font-size: 12px"></i>
+                                            </a>
+
                                             <a href="{{ route('social.link.edit', $link->id) }}" class="btn btn-sm btn-info"
                                                 title="Edit Data">
                                                 <i class="fas fa-edit m-0" style="font-size: 12px"></i>
@@ -124,4 +130,36 @@
         <!-- end row -->
     </div>
     <!--end page wrapper -->
+
+    <script>
+        function StatusChange(id) {
+            fetch(`/social/status/${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        // Optionally update button style or icon here
+                        const btn = document.getElementById(`status_btn_${id}`);
+                        if (data.status === 'active') {
+                            btn.classList.remove('btn-danger');
+                            btn.classList.add('btn-success');
+                        } else {
+                            btn.classList.remove('btn-success');
+                            btn.classList.add('btn-danger');
+                        }
+                    } else {
+                        alert("Status change failed.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Something went wrong.");
+                });
+        }
+    </script>
 @endsection

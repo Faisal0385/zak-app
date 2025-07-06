@@ -15,20 +15,20 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
                 // CategorySeeder::class,
+            UserSeeder::class,
             SliderSeeder::class,
-            // SocialMediaLinkSeeder::class,
-            // SiteSettingsSeeder::class,
-            // AboutPageSeeder::class,
-            // CountriesTableSeeder::class,
-            // StatesTableSeeder::class,
-            // CitiesTableSeeder::class,
-            // PropertyAmenitiesTableSeeder::class,
-            // PropertyTypesTableSeeder::class,
-            // PropertyLabelsTableSeeder::class,
-            // PropertyStatusesTableSeeder::class,
-
-            // ProjectsTableSeeder::class,
-            // PropertiesTableSeeder::class
+            SocialMediaLinkSeeder::class,
+            SiteSettingsSeeder::class,
+            AboutPageSeeder::class,
+            CountriesTableSeeder::class,
+            StatesTableSeeder::class,
+            CitiesTableSeeder::class,
+            PropertyAmenitiesTableSeeder::class,
+            PropertyTypesTableSeeder::class,
+            PropertyLabelsTableSeeder::class,
+            PropertyStatusesTableSeeder::class,
+            ProjectsTableSeeder::class,
+            PropertiesTableSeeder::class
         ]);
 
     }

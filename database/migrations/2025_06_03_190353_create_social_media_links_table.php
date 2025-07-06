@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('platform'); // e.g., Facebook, Instagram
             $table->string('url');
             $table->string('icon_class'); // e.g., fab fa-facebook
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
