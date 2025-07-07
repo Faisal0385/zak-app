@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PropertyTypeList extends Model
 {
     use HasFactory;
+    protected $table = 'property_type_lists';
 
     protected $fillable = [
         'property_id',

@@ -15,12 +15,12 @@ class PropertyType extends Model
         'image'
     ];
 
+    // Many-to-Many with Property through the pivot table
     public function properties()
     {
         return $this->belongsToMany(Properties::class, 'property_type_lists')
             ->withTimestamps();
     }
-
 
     public function leads()
     {

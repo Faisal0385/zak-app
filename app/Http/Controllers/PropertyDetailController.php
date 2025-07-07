@@ -15,7 +15,7 @@ class PropertyDetailController extends Controller
     {
         $properties = Properties::where('id', '=', $id)->where('status', '=', 'active')->firstOrFail();
         $propertyAmenitiesLists = PropertyAmenitiesList::where('property_id', '=', $id)->get();
-        $propertyTypeLists = PropertyTypeList::where('property_id', '=', $id)->get();
+        $propertyTypeLists = PropertyTypeList::with('propertyType')->where('property_id', '=', $id)->get();
         $propertyFloorLayouts = PropertyFloorLayout::where('property_id', '=', $id)->get();
         $propertyGalleryImages = PropertyGalleryImage::where('property_id', '=', $id)->get();
 

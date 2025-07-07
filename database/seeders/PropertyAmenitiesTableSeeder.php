@@ -41,7 +41,7 @@ class PropertyAmenitiesTableSeeder extends Seeder
             DB::table('property_amenities')->insert([
                 'name' => $amenity,
                 'slug' => Str::slug($amenity),
-                'icon_class' => null,
+                'icon_class' => "fa fa-check-circle",
                 'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),

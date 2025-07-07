@@ -13,7 +13,7 @@ class PropertyAmenitiesController extends Controller
      */
     public function index()
     {
-        $propertyAmenities = PropertyAmenities::all();
+        $propertyAmenities = PropertyAmenities::latest()->get();
         return view('admin.property-amenities.index', compact('propertyAmenities'));
     }
 

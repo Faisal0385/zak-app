@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\Properties;
 use App\Models\PropertyType;
-use Illuminate\Http\Request;
+
 
 class SinglePropertyListController extends Controller
 {
@@ -15,7 +15,6 @@ class SinglePropertyListController extends Controller
         $project_id = $project->id;
         $properties = Properties::where('project_id', $project_id)
             ->where('status', '=', 'active')
-            ->with('propertyType')
             ->get();
 
         $propertyTypes = PropertyType::where('status', '=', 'active')->get();

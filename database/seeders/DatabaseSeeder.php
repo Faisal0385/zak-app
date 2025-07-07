@@ -28,7 +28,11 @@ class DatabaseSeeder extends Seeder
             PropertyLabelsTableSeeder::class,
             PropertyStatusesTableSeeder::class,
             ProjectsTableSeeder::class,
-            PropertiesTableSeeder::class
+            PropertiesTableSeeder::class,
+            PropertyTypeListSeeder::class,
+            PropertyAmenitiesListSeeder::class,
+            PropertyFloorLayoutSeeder::class,
+            PropertyGalleryImageSeeder::class
         ]);
 
     }

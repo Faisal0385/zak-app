@@ -48,9 +48,10 @@ class Properties extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function propertyType()
+    // Relation with Property Types (many-to-many through pivot table)
+    public function propertyTypes()
     {
-        return $this->belongsTo(PropertyType::class, 'property_id');
+        return $this->belongsToMany(PropertyType::class, 'property_type_lists');
     }
 
     public function city()

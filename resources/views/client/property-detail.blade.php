@@ -163,7 +163,9 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="bg-white p-2 m-1 rounded">
                                         <strong>Property Type: </strong>
-                                        <span>{{ $properties->propertyTypes }}</span>
+                                        @foreach ($propertyTypeLists as $key => $propertyTypeList)
+                                            <span>{{ $propertyTypeList?->propertyType?->name }}</span>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">

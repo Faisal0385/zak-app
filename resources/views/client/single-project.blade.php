@@ -173,9 +173,7 @@
                             <h5 class="card-title">{{ $property->property_name }}</h5>
                             <p class="card-text mb-2">
                                 <i class="fa fa-bed me-1"></i> {{ $property->bedroom }} Bedrooms
-                                {{ $property->propertyType?->name }}
                             </p>
-                            {{-- --}}
                             @if ($property->price_on_call == 'yes')
                                 <p class="price mb-2">Call For Price</p>
                             @else
