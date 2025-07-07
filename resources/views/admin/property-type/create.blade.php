@@ -39,15 +39,29 @@
                             <b>Add Property Type</b>
                         </h4>
                         <hr class="m-1" />
-                        <form id="myForm" method="POST" action="{{ route('property.type.store') }}">
+                        <form id="myForm" method="POST" action="{{ route('property.type.store') }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
-                                <div class="col">
-                                    <label for="property_type" class="col-form-label">Property
-                                        Type</label>
+                                <div class="col-lg-12 mb-3">
+                                    <label for="property_type" class="col-form-label">Property Type</label>
                                     <div class="form-group">
                                         <input type="text" name="property_type" id="property_type"
-                                            class="form-control form-control-sm" placeholder="Property Type" />
+                                            class="form-control form-control-sm" value="{{ old('property_type') }}"
+                                            placeholder="Property Type" />
+                                        @error('property_type')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="image" class="mb-2">Property Type Image</label>
+                                    <input type="file" class="mb-2 form-control form-control-sm" id="image"
+                                        name="image" accept="image/png, image/jpg, image/jpeg, image/svg+xml, image/webp"
+                                        onchange="showPreview(event)" />
+                                    <div class="preview">
+                                        <img src="{{ asset('no_image.jpg') }}" class="img img-thumbnail"
+                                            id="file-ip-1-preview" width="150px" height="80px" />
                                     </div>
                                 </div>
                             </div>
@@ -59,4 +73,13 @@
             <!-- end col -->
         </div>
     </div>
+
+
+    <script>
+        function showPreview(event) {
+            const preview = document.getElementById('file-ip-1-preview');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            preview.onload = () => URL.revokeObjectURL(preview.src); // Free memory
+        }
+    </script>
 @endsection

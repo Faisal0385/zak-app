@@ -40,6 +40,7 @@
                             <thead>
                                 <tr class="text-white" style="background-color: teal">
                                     <th>Sl</th>
+                                    <th>Image</th>
                                     <th>Property Type</th>
                                     <th>Slug</th>
                                     <th style="text-align: center">Action</th>
@@ -50,6 +51,11 @@
                                 @foreach ($properties as $key => $property)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+                                        <td>
+                                            <img class="img-thumbnail"
+                                                src="{{ !empty($property->image) ? asset($property->image) : asset('no_image.jpg') }}"
+                                                alt="image" width="50" height="50">
+                                        </td>
                                         <td>
                                             {{ $property->name }}
                                         </td>
@@ -114,6 +120,7 @@
                             <tfooter>
                                 <tr class="text-white" style="background-color: teal">
                                     <th>Sl</th>
+                                    <th>Image</th>
                                     <th>Property Status</th>
                                     <th>Slug</th>
                                     <th style="text-align: center">Action</th>
