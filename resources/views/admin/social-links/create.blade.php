@@ -60,7 +60,7 @@
                             <div class="mb-3">
                                 <label for="url" class="col-form-label">URL</label>
                                 <div class="form-group">
-                                    <textarea name="url" id="url" class="form-control form-control-sm" placeholder="URL"></textarea>
+                                    <textarea name="url" id="url" class="form-control form-control-sm" placeholder="URL">#</textarea>
                                 </div>
                             </div>
                             <input type="submit" class="btn btn-sm btn-info waves-effect waves-light" value="Add" />

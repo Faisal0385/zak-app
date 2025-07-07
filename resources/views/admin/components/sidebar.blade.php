@@ -62,6 +62,12 @@
                 <div class="menu-title">Lead List</div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('home') }}" target="_blank">
+                <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                <div class="menu-title">Website View</div>
+            </a>
+        </li>
 
         <li class="menu-label">SETUP</li>
 

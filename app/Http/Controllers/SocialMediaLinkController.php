@@ -33,7 +33,7 @@ class SocialMediaLinkController extends Controller
         $validator = \Validator::make($request->all(), [
             'icon_class' => 'required|string|max:255',
             'platform' => 'required|string|max:255',
-            'url' => 'required|url|max:500',
+            'url' => 'required|string|max:500',
         ]);
 
         if ($validator->fails()) {
@@ -68,7 +68,7 @@ class SocialMediaLinkController extends Controller
         $validator = \Validator::make($request->all(), [
             'icon_class' => 'required|string|max:255',
             'platform' => 'required|string|max:255',
-            'url' => 'required|url|max:500',
+            'url' => 'required|string|max:500',
         ]);
 
         if ($validator->fails()) {

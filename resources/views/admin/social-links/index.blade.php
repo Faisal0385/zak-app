@@ -68,12 +68,10 @@
                                                 title="Edit Data">
                                                 <i class="fas fa-edit m-0" style="font-size: 12px"></i>
                                             </a>
-
-                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            {{-- <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal12">
                                                 <i class="fa fa-trash m-0" style="font-size: 12px"></i>
-                                            </button>
-
+                                            </button> --}}
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal12" tabindex="-1"
                                                 aria-labelledby="exampleModal12Label" aria-hidden="true">
