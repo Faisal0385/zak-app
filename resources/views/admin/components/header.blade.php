@@ -47,6 +47,14 @@
                             <i class="bx bx-cog"></i><span>Change Password</span>
                         </a>
                     </li>
+                    @if (Auth()->user()->role == 'admin')
+                        <li>
+                            <a class="dropdown-item" href="{{ route('admin.register.show') }}">
+                                <i class="bx bx-user"></i><span>Register</span>
+                            </a>
+                        </li>
+                    @endif
+
                     <li>
                         <div class="dropdown-divider mb-0"></div>
                     </li>

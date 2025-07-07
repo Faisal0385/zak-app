@@ -6,9 +6,9 @@ use App\Models\Project;
 use App\Models\Properties;
 use App\Models\User;
 use Auth;
-use Hash;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -106,4 +106,42 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     } ## End AdminUpdatePassword Mehtod
 
+
+
+    ## Register
+    public function register()
+    {
+        return view('admin.admin_register');
+    }
+
+    public function store(Request $request)
+    {
+        ## Validation
+        $validator = Validator::make($request->all(), [
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            'phone'    => 'nullable|string|max:20',
+            'address'  => 'nullable|string|max:500',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        ## Store user
+        User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
+            'phone'    => $request->phone,
+            'address'  => $request->address,
+            'status'   => 1,
+            'role'     => 'admin',
+        ]);
+
+        return redirect()->back()->with('success', 'Admin registered successfully!');
+    }
 }

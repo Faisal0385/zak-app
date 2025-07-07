@@ -66,6 +66,9 @@ Route::group(['prefix' => 'admin/dashboard'], function () {
     Route::post('/change/password', [AdminController::class, 'ChangePassword']);
     Route::post('profile/update', [AdminController::class, 'adminProfileUpdate'])->name('admin.profile.update');
     Route::post('password/update', [AdminController::class, 'adminPasswordUpdate'])->name('admin.password.update');
+
+    Route::get('register/show', [AdminController::class, 'register'])->name('admin.register.show');
+    Route::post('register/store', [AdminController::class, 'store'])->name('admin.register.store');
 });
 #@@ Admin end
 
