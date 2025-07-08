@@ -43,8 +43,8 @@ class PropertyTypeController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = Str::slug($request->property_type) . '_' . time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('upload/property_types'), $imageName);
-            $imagePath = 'upload/property_types/' . $imageName;
+            $image->move(public_path('uploads/property_types'), $imageName);
+            $imagePath = 'uploads/property_types/' . $imageName;
         }
 
         // Store in DB
@@ -88,8 +88,8 @@ class PropertyTypeController extends Controller
 
             $image = $request->file('image');
             $imageName = Str::slug($request->property_type) . '_' . time() . '.' . $image->getClientOriginalExtension();
-            $imagePath = 'upload/property_types/' . $imageName;
-            $image->move(public_path('upload/property_types'), $imageName);
+            $imagePath = 'uploads/property_types/' . $imageName;
+            $image->move(public_path('uploads/property_types'), $imageName);
 
             // Set new image path
             $propertyType->image = $imagePath;
