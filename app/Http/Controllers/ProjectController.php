@@ -83,9 +83,9 @@ class ProjectController extends Controller
             if ($Project->image && file_exists(public_path($Project->image))) {
                 unlink(public_path($Project->image));
             }
-
-            $path = $request->file('image')->store('projects', 'public');
-            $Project->image = 'storage/' . $path;
+            
+            $imagePath = $this->uploadImage($request->file('image'));
+            $Project->image = $imagePath;
         }
 
         ## Update the record
@@ -120,10 +120,21 @@ class ProjectController extends Controller
     /**
      * Upload category image to storage and return its path.
      */
-    private function uploadImage($file)
+    private function uploadImage($image)
     {
-        $path = $file->store('projects', 'public');
-        return 'storage/' . $path;
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('uploads/projects');
+
+        // Create the folder if it doesn't exist
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
+        // Move the image to public/uploads/sliders
+        $image->move($destinationPath, $imageName);
+
+        // Return the relative path (to be stored in DB and used in frontend)
+        return 'uploads/projects/' . $imageName;
     }
 
     public function changeStatus($id)
@@ -151,5 +162,4 @@ class ProjectController extends Controller
             }
         }
     }
-
 }

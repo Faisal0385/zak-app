@@ -49,13 +49,25 @@ class AboutPageController extends Controller
         $about->video_link = $request->video_link;
 
         if ($request->hasFile('banner_image')) {
-            // Optionally delete old image:
+            // Optionally delete old image
             if ($about->banner_image && file_exists(public_path($about->banner_image))) {
                 unlink(public_path($about->banner_image));
             }
 
-            $path = $request->file('banner_image')->store('about', 'public');
-            $about->banner_image = 'storage/' . $path;
+            $image = $request->file('banner_image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('uploads/about');
+
+            // Create directory if it doesn't exist
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Move the uploaded image to public/uploads/about
+            $image->move($destinationPath, $imageName);
+
+            // Save the relative path to DB
+            $about->banner_image = 'uploads/about/' . $imageName;
         }
 
         $about->save();

@@ -191,9 +191,20 @@ class PropertiesController extends Controller
                 unlink(public_path($property->featured_image));
             }
 
-            $path = $request->file('featured_image')->store('properties', 'public');
-            // Save relative path in DB
-            $property->featured_image = 'storage/' . $path;
+            $image = $request->file('featured_image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('uploads/properties');
+
+            // Create directory if it doesn't exist
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Move the uploaded image to public/uploads/properties
+            $image->move($destinationPath, $imageName);
+
+            // Save the relative path to DB
+            $property->featured_image = 'uploads/properties/' . $imageName;
         }
         $property->save();
 
@@ -208,17 +219,31 @@ class PropertiesController extends Controller
 
         $property = Properties::findOrFail($id);
 
-        if ($property->pdf_attachment && Storage::disk('public')->exists($property->pdf_attachment)) {
-            Storage::disk('public')->delete($property->pdf_attachment);
+        // Delete old file if exists
+        if ($property->file_attachment && file_exists(public_path($property->file_attachment))) {
+            unlink(public_path($property->file_attachment));
         }
 
-        $path = $request->file('pdf_attachment')->store('property_pdf', 'public');
+        // Handle new file upload
+        $pdf = $request->file('pdf_attachment');
+        $fileName = time() . '_' . uniqid() . '.' . $pdf->getClientOriginalExtension();
+        $destinationPath = public_path('uploads/property_pdf');
 
-        $property->file_attachment = 'storage/' . $path;
+        // Create the directory if it doesn't exist
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
+        // Move the uploaded PDF file
+        $pdf->move($destinationPath, $fileName);
+
+        // Save the relative path to the DB
+        $property->file_attachment = 'uploads/property_pdf/' . $fileName;
         $property->save();
 
         return redirect()->back()->with('success', 'PDF uploaded successfully!');
     }
+
 
     public function storeGalleryImage(Request $request, $id)
     {
@@ -228,13 +253,23 @@ class PropertiesController extends Controller
 
         $property = Properties::findOrFail($id);
 
-        // Store image in public disk
-        $path = $request->file('gallery_image')->store('property_gallery', 'public');
+        // Handle the image upload
+        $image = $request->file('gallery_image');
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('uploads/property_gallery');
+
+        // Create directory if it doesn't exist
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
+        // Move the image to public/uploads/property_gallery
+        $image->move($destinationPath, $imageName);
 
         // Save to PropertyGalleryImage model
         $galleryImage = new PropertyGalleryImage();
         $galleryImage->property_id = $property->id;
-        $galleryImage->gallery_image = 'storage/' . $path;
+        $galleryImage->gallery_image = 'uploads/property_gallery/' . $imageName;
         $galleryImage->save();
 
         return redirect()->back()->with('success', 'Gallery image uploaded successfully!');
@@ -254,7 +289,6 @@ class PropertiesController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Property labels updated successfully!');
-
     }
 
     public function updateBasicInfo(Request $request, $id)

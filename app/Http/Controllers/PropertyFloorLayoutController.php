@@ -41,8 +41,18 @@ class PropertyFloorLayoutController extends Controller
         if ($request->hasFile('floor_layout_image')) {
             $file = $request->file('floor_layout_image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('floor_layouts', $filename, 'public');
-            $data['floor_layout_image'] = 'storage/' . $filePath;
+            $destinationPath = public_path('uploads/floor_layouts');
+
+            // Create the folder if it doesn't exist
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Move the file to public/uploads/floor_layouts
+            $file->move($destinationPath, $filename);
+
+            // Save the relative path to DB
+            $data['floor_layout_image'] = 'uploads/floor_layouts/' . $filename;
         }
 
         PropertyFloorLayout::create($data);
@@ -76,15 +86,25 @@ class PropertyFloorLayoutController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('floor_layout_image')) {
-            // Delete old file if exists
+            // Delete old file if it exists
             if ($layout->floor_layout_image && file_exists(public_path($layout->floor_layout_image))) {
                 unlink(public_path($layout->floor_layout_image));
             }
 
             $file = $request->file('floor_layout_image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('floor_layouts', $filename, 'public');
-            $data['floor_layout_image'] = 'storage/' . $filePath;
+            $destinationPath = public_path('uploads/floor_layouts');
+
+            // Create the directory if it doesn't exist
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0755, true);
+            }
+
+            // Move the file to public/uploads/floor_layouts
+            $file->move($destinationPath, $filename);
+
+            // Save the relative path to DB
+            $data['floor_layout_image'] = 'uploads/floor_layouts/' . $filename;
         }
 
         $layout->update($data);
